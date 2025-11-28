@@ -1,0 +1,35 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="1200" height="630" fill="#020617"/>
+    
+    <!-- Decorative Designs (Abstract Tech/Geometry) -->
+    <!-- Central Ring -->
+    <circle cx="600" cy="315" r="260" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.1"/>
+    <circle cx="600" cy="315" r="320" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.05" stroke-dasharray="20 20"/>
+    
+    <!-- Corner Accents -->
+    <circle cx="50" cy="50" r="150" fill="#f59e0b" opacity="0.03"/>
+    <circle cx="1150" cy="580" r="200" fill="#f59e0b" opacity="0.03"/>
+    
+    <!-- Main Text Group -->
+    <g text-anchor="middle">
+        <!-- Name: Massive, Gold, Centered -->
+        <text x="600" y="290" font-family="'Playfair Display', 'Times New Roman', serif" font-size="150" font-weight="bold" fill="#f59e0b" letter-spacing="-2">Aadesh Das</text>
+        
+        <!-- Divider Line -->
+        <line x1="300" y1="340" x2="900" y2="340" stroke="#334155" stroke-width="3"/>
+        
+        <!-- Subtitle: Sleek, Wide Spacing, Full Form -->
+        <text x="600" y="410" font-family="'Lato', 'Arial', sans-serif" font-size="36" font-weight="300" fill="#e2e8f0" letter-spacing="4" text-transform="uppercase">
+            Teacher of Computer Science
+        </text>
+        <text x="600" y="460" font-family="'Lato', 'Arial', sans-serif" font-size="36" font-weight="300" fill="#e2e8f0" letter-spacing="4" text-transform="uppercase">
+            &amp; Artificial Intelligence
+        </text>
+
+        <!-- Portfolio Link (Subtle) -->
+        <text x="600" y="560" font-family="'Lato', 'Arial', sans-serif" font-size="24" font-weight="400" fill="#f59e0b" letter-spacing="2" opacity="0.8">
+            aadeshdas.github.io
+        </text>
+    </g>
+</svg>
