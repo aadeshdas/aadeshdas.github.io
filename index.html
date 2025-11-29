@@ -4,45 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Primary Meta Tags -->
     <title>Aadesh Das | Teacher of CS & AI</title>
     <meta name="title" content="Aadesh Das | Teacher of CS & AI">
     <meta name="description" content="Portfolio of Aadesh Das - PGT Computer Science & AI Educator. Specializing in Python, Artificial Intelligence, and STEM Innovation.">
     
-    <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="WT07HOerbiry7la0GPmmyzjlvihZ5goxUOSatlx0jQU" />
-
-    <!-- Bing Webmaster Tools verification -->
+    
     <meta name="msvalidate.01" content="790093DCC5D734E962024E152C0F2FB7" />
 
-    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aadeshdas.github.io/">
     <meta property="og:title" content="Aadesh Das | Teacher of CS & AI">
     <meta property="og:description" content="Portfolio of Aadesh Das - PGT Computer Science & AI Educator. Specializing in Python, Artificial Intelligence, and STEM Innovation.">
-    <!-- Make sure to save your banner image as og-banner.png in the same folder -->
     <meta property="og:image" content="https://aadeshdas.github.io/og-banner.png">
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://aadeshdas.github.io/">
     <meta property="twitter:title" content="Aadesh Das | Teacher of CS & AI">
     <meta property="twitter:description" content="Portfolio of Aadesh Das - PGT Computer Science & AI Educator. Specializing in Python, Artificial Intelligence, and STEM Innovation.">
     <meta property="twitter:image" content="https://aadeshdas.github.io/og-banner.png">
 
-    <!-- Favicon (Embedded SVG Monogram 'AD') -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><rect width=%22512%22 height=%22512%22 rx=%22100%22 fill=%22%23020617%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22serif%22 font-weight=%22bold%22 font-size=%22260%22 fill=%22%23f59e0b%22 text-anchor=%22middle%22 dominant-baseline=%22central%22>AD</text></svg>">
 
-    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -69,7 +58,6 @@
         }
     </script>
 
-    <!-- Custom CSS -->
     <style>
         /* Glass Navigation */
         .glass-nav {
@@ -124,6 +112,20 @@
         }
         .skill-item.active .fa-chevron-down {
             transform: rotate(180deg);
+        }
+        
+        /* Animated Background Blobs */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
         }
 
         /* Hamburger Menu Animation Styles */
@@ -184,7 +186,6 @@
         .dark .icon-moon { opacity: 1; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
     </style>
     
-    <!-- Script to check theme immediately to prevent flash -->
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
@@ -195,16 +196,13 @@
 </head>
 <body class="antialiased bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 selection:bg-gold-500 selection:text-white">
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Name Logo -->
                 <span id="nav-logo" class="text-3xl font-serif font-bold text-slate-900 dark:text-white tracking-wide opacity-0 -translate-y-4 transition-all duration-500 cursor-default">
                     Aadesh Das<span class="text-gold-600">.</span>
                 </span>
 
-                <!-- Desktop Menu (Smart Spacing) -->
                 <div class="hidden md:flex md:space-x-3 lg:space-x-8 items-center">
                     <a href="#home" class="md:text-xs lg:text-sm uppercase md:tracking-wide lg:tracking-widest text-slate-600 hover:text-gold-600 dark:text-slate-300 dark:hover:text-gold-500 transition">Home</a>
                     <a href="#about" class="md:text-xs lg:text-sm uppercase md:tracking-wide lg:tracking-widest text-slate-600 hover:text-gold-600 dark:text-slate-300 dark:hover:text-gold-500 transition">About</a>
@@ -213,7 +211,6 @@
                     <a href="#projects" class="md:text-xs lg:text-sm uppercase md:tracking-wide lg:tracking-widest text-slate-600 hover:text-gold-600 dark:text-slate-300 dark:hover:text-gold-500 transition">Projects</a>
                     <a href="#certifications" class="md:text-xs lg:text-sm uppercase md:tracking-wide lg:tracking-widest text-slate-600 hover:text-gold-600 dark:text-slate-300 dark:hover:text-gold-500 transition">Certifications</a>
                     
-                    <!-- Toggle Switch (Desktop) -->
                     <button id="theme-toggle-desktop" class="relative h-6 w-14 rounded-full bg-blue-100 dark:bg-slate-700 border border-blue-200 dark:border-slate-600 flex items-center transition-colors duration-300 focus:outline-none" aria-label="Toggle Dark Mode">
                         <span class="absolute left-2 text-[10px] text-yellow-500/50"><i class="fas fa-sun"></i></span>
                         <span class="absolute right-2 text-[10px] text-slate-400/50"><i class="fas fa-moon"></i></span>
@@ -229,9 +226,7 @@
                     </a>
                 </div>
 
-                <!-- Mobile Controls -->
                 <div class="md:hidden flex items-center gap-4">
-                    <!-- Toggle Switch (Mobile) -->
                     <button id="theme-toggle-mobile" class="relative h-6 w-14 rounded-full bg-blue-100 dark:bg-slate-700 border border-blue-200 dark:border-slate-600 flex items-center transition-colors duration-300 focus:outline-none">
                         <span class="absolute left-2 text-[10px] text-yellow-500/50"><i class="fas fa-sun"></i></span>
                         <span class="absolute right-2 text-[10px] text-slate-400/50"><i class="fas fa-moon"></i></span>
@@ -250,7 +245,6 @@
             </div>
         </div>
         
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-lg absolute w-full top-20 left-0 -z-10">
             <div class="px-4 py-6 space-y-3">
                 <a href="#home" class="block px-4 py-3 text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-gold-600 rounded-lg transition">Home</a>
@@ -264,15 +258,11 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <!-- Restored old background styling (Slant) -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 pb-24 lg:pb-0 overflow-hidden bg-slate-50 dark:bg-slate-950">
-        <!-- Abstract Background Shape -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 pb-24 lg:pb-0 overflow-hidden bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-100 dark:bg-slate-900 clip-path-slant hidden lg:block transition-colors duration-300" style="clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-8 lg:py-12">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Text Content -->
                 <div class="order-2 lg:order-1 reveal">
                     <p class="text-gold-600 font-bold tracking-widest uppercase mb-4">Post-Graduate Teacher (CS & AI)</p>
                     <h1 class="text-5xl md:text-7xl font-serif font-bold text-slate-900 dark:text-white mb-6 leading-tight">
@@ -303,7 +293,7 @@
                                 <i class="fas fa-envelope text-gold-500"></i>
                                 <span class="text-slate-700 dark:text-slate-300">Email:</span>
                             </div>
-                            <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded text-sm font-semibold tracking-wide text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">aadesh.0823@gmail.com</span>
+                            <a href="mailto:aadesh.0823@gmail.com" class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded text-sm font-semibold tracking-wide text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:text-gold-500 dark:hover:text-gold-400 transition cursor-pointer">aadesh.0823@gmail.com</a>
                         </div>
 
                         <div class="flex flex-wrap items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
@@ -319,7 +309,6 @@
                     </div>
                 </div>
 
-                <!-- Image -->
                 <div class="order-1 lg:order-2 flex justify-center lg:justify-end reveal mt-10 lg:mt-0" style="transition-delay: 200ms;">
                     <div class="relative w-72 h-72 md:w-96 md:h-96">
                         <div class="absolute inset-0 border-2 border-gold-500 rounded-full transform translate-x-4 translate-y-4"></div>
@@ -333,8 +322,7 @@
         </div>
     </section>
 
-    <!-- About / Skills Section -->
-    <section id="about" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+    <section id="about" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300 border-b border-slate-200 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-4xl font-serif font-bold text-slate-900 dark:text-white section-heading mb-4">Expertise & Skills</h2>
@@ -345,13 +333,12 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                <!-- Pedagogy -->
                 <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500">
                     <div class="w-12 h-12 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-6 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition">
                         <i class="fas fa-chalkboard-teacher text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Pedagogy</h3>
-                    <!-- ... content ... -->
+                    
                     <div class="space-y-3">
                         <div class="skill-item cursor-pointer group/item" onclick="toggleSkill(this)">
                             <div class="flex items-center justify-between">
@@ -399,8 +386,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Leadership -->
-                <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500">
+
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500" style="transition-delay: 100ms;">
                     <div class="w-12 h-12 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-6 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition">
                         <i class="fas fa-users text-xl"></i>
                     </div>
@@ -454,8 +441,7 @@
                     </div>
                 </div>
 
-                <!-- 3. Programming -->
-                <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500">
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500" style="transition-delay: 200ms;">
                     <div class="w-12 h-12 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-6 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition">
                         <i class="fas fa-code text-xl"></i>
                     </div>
@@ -476,8 +462,7 @@
                     </div>
                 </div>
 
-                <!-- 4. AI & Data -->
-                <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500">
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500" style="transition-delay: 300ms;">
                     <div class="w-12 h-12 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-6 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition">
                         <i class="fas fa-brain text-xl"></i>
                     </div>
@@ -502,8 +487,7 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-24 bg-slate-900 dark:bg-black text-white relative transition-colors duration-300">
+    <section id="experience" class="py-24 bg-slate-900 dark:bg-black text-white relative transition-colors duration-300 border-b border-slate-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-4xl font-serif font-bold text-white section-heading mb-4">Professional Journey</h2>
@@ -514,9 +498,10 @@
 
             <div class="space-y-12 relative">
                 <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-slate-700 transform md:-translate-x-1/2 ml-6 md:ml-0"></div>
-                <!-- ... experience items ... -->
+
                 <div class="relative pl-16 md:pl-0 md:grid md:grid-cols-2 gap-12 items-start reveal group">
                     <div class="absolute left-0 md:left-1/2 w-4 h-4 bg-gold-500 rounded-full border-4 border-slate-900 dark:border-black transform translate-x-[1.25rem] md:-translate-x-1/2 z-20 group-hover:scale-125 transition mt-6"></div>
+                    
                     <div class="md:text-right md:pr-12">
                         <span class="inline-block py-1 px-3 bg-slate-800 dark:bg-slate-900 text-gold-400 text-xs font-bold rounded mb-2">Apr 2024 - Present</span>
                         <h3 class="text-xl font-bold text-white">PGT - Computer Science & AI</h3>
@@ -532,10 +517,12 @@
                     </div>
                     <div class="hidden md:block"></div>
                 </div>
-                <!-- Other Experience Items -->
+
                 <div class="relative pl-16 md:pl-0 md:grid md:grid-cols-2 gap-12 items-start reveal group">
                     <div class="absolute left-0 md:left-1/2 w-4 h-4 bg-slate-600 rounded-full border-4 border-slate-900 dark:border-black transform translate-x-[1.25rem] md:-translate-x-1/2 z-20 group-hover:bg-gold-500 transition mt-6"></div>
+                    
                     <div class="hidden md:block"></div>
+                    
                     <div class="md:pl-12">
                         <span class="inline-block py-1 px-3 bg-slate-800 dark:bg-slate-900 text-slate-300 text-xs font-bold rounded mb-2">Jul 2023 - Apr 2024</span>
                         <h3 class="text-xl font-bold text-white">TGT - Computer Science</h3>
@@ -553,6 +540,7 @@
 
                 <div class="relative pl-16 md:pl-0 md:grid md:grid-cols-2 gap-12 items-start reveal group">
                     <div class="absolute left-0 md:left-1/2 w-4 h-4 bg-slate-600 rounded-full border-4 border-slate-900 dark:border-black transform translate-x-[1.25rem] md:-translate-x-1/2 z-20 group-hover:bg-gold-500 transition mt-6"></div>
+                    
                     <div class="md:text-right md:pr-12">
                         <span class="inline-block py-1 px-3 bg-slate-800 dark:bg-slate-900 text-slate-300 text-xs font-bold rounded mb-2">Aug 2023 - Jan 2024</span>
                         <h3 class="text-xl font-bold text-white">Guest Faculty of Computer Science (Part-Time)</h3>
@@ -589,7 +577,6 @@
         </div>
     </section>
 
-    <!-- Education Section -->
     <section id="education" class="py-20 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -598,9 +585,7 @@
                     Building a robust academic foundation to support core computer science concepts and effective teaching.
                 </p>
             </div>
-            <!-- Education Cards: Added shadow-md and border-slate-300 for better light mode contrast -->
             <div class="flex flex-wrap justify-center gap-6">
-                <!-- Edu 1 -->
                 <div class="w-full md:w-[calc(33%-1rem)] bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 transition group">
                     <div class="flex justify-between items-start mb-3">
                         <div class="text-gold-500 text-xs font-bold uppercase tracking-wider">2025 - 2027</div>
@@ -616,7 +601,6 @@
                     </ul>
                 </div>
 
-                <!-- Edu 2 -->
                 <div class="w-full md:w-[calc(33%-1rem)] bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 transition group">
                     <div class="flex justify-between items-start mb-3">
                         <div class="text-slate-400 text-xs font-bold uppercase tracking-wider">2021 - 2023</div>
@@ -631,7 +615,6 @@
                         <li><i class="fas fa-graduation-cap text-gold-400 mr-1"></i>CGPA: 6.940</li>
                     </ul>
                 </div>
-                <!-- Edu 3 -->
                 <div class="w-full md:w-[calc(33%-1rem)] bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 transition group">
                     <div class="flex justify-between items-start mb-3">
                         <div class="text-slate-400 text-xs font-bold uppercase tracking-wider">2018 - 2021</div>
@@ -646,7 +629,6 @@
                         <li><i class="fas fa-graduation-cap text-gold-400 mr-1"></i>CGPA: 7.924</li>
                     </ul>
                 </div>
-                <!-- Edu 4 -->
                 <div class="w-full md:w-[calc(33%-1rem)] bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 transition group">
                     <div class="flex justify-between items-start mb-3">
                         <div class="text-slate-400 text-xs font-bold uppercase tracking-wider">2018</div>
@@ -661,7 +643,6 @@
                         <li><i class="fas fa-percentage text-gold-400 mr-1"></i>Percentage: 70.50%</li>
                     </ul>
                 </div>
-                <!-- Edu 5 -->
                 <div class="w-full md:w-[calc(33%-1rem)] bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 transition group">
                     <div class="flex justify-between items-start mb-3">
                         <div class="text-slate-400 text-xs font-bold uppercase tracking-wider">2016</div>
@@ -680,8 +661,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <!-- Dark Mode Background Changed to slate-950 (Dark Blue) -->
     <section id="projects" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -690,9 +669,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <!-- Dark Mode Card Background slate-900 (Light Blue) for contrast against slate-950 section -->
-                <!-- Added text-left and justify-start for alignment -->
                 <div class="group relative overflow-hidden rounded-xl bg-slate-900 text-white shadow-lg reveal border border-transparent dark:border-slate-600 dark:bg-slate-900">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent opacity-90"></div>
                     <div class="relative p-8 h-full flex flex-col justify-start min-h-[300px] text-left">
@@ -707,7 +683,6 @@
                     </div>
                 </div>
 
-                <!-- Project 2 -->
                 <div class="group relative overflow-hidden rounded-xl bg-slate-900 text-white shadow-lg reveal border border-transparent dark:border-slate-600 dark:bg-slate-900" style="transition-delay: 100ms;">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent opacity-90"></div>
                     <div class="relative p-8 h-full flex flex-col justify-start min-h-[300px] text-left">
@@ -722,7 +697,6 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
                 <div class="group relative overflow-hidden rounded-xl bg-slate-900 text-white shadow-lg reveal border border-transparent dark:border-slate-600 dark:bg-slate-900" style="transition-delay: 200ms;">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent opacity-90"></div>
                     <div class="relative p-8 h-full flex flex-col justify-start min-h-[300px] text-left">
@@ -740,9 +714,6 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <!-- Dark Mode Background Changed to slate-900 (Light Blue) to alternate correctly -->
-    <!-- Certifications Cards: Added shadow-md, border-slate-300, and hover effects -->
     <section id="certifications" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300 border-t border-slate-200 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -753,8 +724,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Academic Coursework -->
-                <!-- Added shadow-md and border-slate-300 for light mode contrast -->
                 <div class="p-8 bg-white dark:bg-slate-950 rounded-xl shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 hover:shadow-lg hover:border-gold-500 dark:hover:border-gold-500 transition group flex flex-col h-full">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center text-gold-500">
@@ -784,8 +753,6 @@
                     </div>
                 </div>
 
-                <!-- Professional Development -->
-                <!-- Added shadow-md and border-slate-300 for light mode contrast -->
                 <div class="p-8 bg-white dark:bg-slate-950 rounded-xl shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 hover:shadow-lg hover:border-gold-500 dark:hover:border-gold-500 transition group flex flex-col h-full">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center text-gold-500">
@@ -793,7 +760,6 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 dark:text-white">Professional Development</h3>
                     </div>
-                    <!-- Removed second line as requested -->
                     <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
                         Continuous engagement with mandatory education standards and pedagogical workshops via CBSE and various non-CBSE trainings.
                     </p>
@@ -816,14 +782,41 @@
         </div>
     </section>
 
-    <!-- Footer / Contact -->
     <footer id="contact" class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <!-- Consistent spacing: changed mb-14 to mb-12 -->
-            <h2 class="text-3xl font-serif font-bold text-white section-heading mb-12">Ready to Collaborate?</h2>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="text-3xl font-serif font-bold text-white section-heading mb-8">Ready to Collaborate?</h2>
             
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-12 flex-wrap">
-                <!-- 1. Download CV -->
+            <p class="text-slate-500 mb-8">
+                Send me a message directly via the form below, or connect through my social links.
+            </p>
+
+            <form action="https://api.web3forms.com/submit" method="POST" class="max-w-3xl mx-auto bg-slate-900 p-8 rounded-xl border border-slate-800 shadow-lg mb-12 text-left space-y-4">
+                <input type="hidden" name="access_key" value="2e4a3a10-0a76-407e-b133-8625a933d7f3">
+                
+                <input type="hidden" name="subject" value="New Message from Portfolio Website">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="name" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Name</label>
+                        <input type="text" name="name" id="name" required class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-gold-500 transition placeholder-slate-600" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Email</label>
+                        <input type="email" name="email" id="email" required class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-gold-500 transition placeholder-slate-600" placeholder="your@email.com">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Message</label>
+                    <textarea name="message" id="message" rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-gold-500 transition placeholder-slate-600 resize-none" placeholder="How can we work together?"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 rounded transition-all duration-300 shadow-lg hover:shadow-slate-900/50 flex items-center justify-center gap-2">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12 flex-wrap">
                 <a href="Aadesh-Das-CV.pdf" download="Aadesh-Das-CV.pdf" class="flex items-center gap-3 hover:text-white transition">
                     <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-gold-500">
                         <i class="fas fa-file-download"></i>
@@ -831,16 +824,6 @@
                     Download CV
                 </a>
 
-                <!-- 2. Phone -->
-                <!-- 
-                <a href="tel:+917075234281" class="flex items-center gap-3 hover:text-white transition">
-                    <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-gold-500">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    +91 70752 34281
-                </a>
-
-                <!-- 3. Email -->
                 <a href="mailto:aadesh.0823@gmail.com" class="flex items-center gap-3 hover:text-white transition">
                     <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-gold-500">
                         <i class="fas fa-envelope"></i>
@@ -848,7 +831,6 @@
                     aadesh.0823@gmail.com
                 </a>
 
-                <!-- 4. LinkedIn -->
                 <a href="https://www.linkedin.com/in/aadeshdas" target="_blank" class="flex items-center gap-3 hover:text-white transition">
                     <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-gold-500">
                         <i class="fab fa-linkedin-in"></i>
@@ -856,7 +838,6 @@
                     linkedin.com/in/aadeshdas
                 </a>
 
-                <!-- 5. Website (Fixed: Removed target="_blank") -->
                 <a href="https://aadeshdas.github.io" class="flex items-center gap-3 hover:text-white transition">
                     <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-gold-500">
                         <i class="fas fa-globe"></i>
@@ -871,12 +852,10 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <a href="#home" id="back-to-top" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-gold-500 hover:bg-gold-600 text-white p-4 rounded-full shadow-xl transition-all duration-300 opacity-0 translate-y-10 z-40 focus:outline-none pointer-events-none flex items-center justify-center w-12 h-12 md:w-14 md:h-14">
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- Interactive Scripts -->
     <script>
         // Theme Toggle Logic
         const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
@@ -1004,5 +983,3 @@
     </script>
 </body>
 </html>
-
-
