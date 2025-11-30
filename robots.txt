@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /favicon.png
+Allow: /assets/images/
+
+Disallow: /assets/documents/
+
+Sitemap: https://aadeshdas.github.io/sitemap.xml
