@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Aadesh Das | Teacher of CS & AI</title>
+    <meta name="title" content="Aadesh Das | Teacher of CS & AI">
+    <meta name="description" content="Portfolio of Aadesh Das - PGT Computer Science & AI Educator. Specializing in Python, Artificial Intelligence, and STEM Innovation.">
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="foQJ1TQYn9wjuENH2Omdyu__-a5EGXUJDY0c_FTRIl4" />
+    
+    <!-- Bing Webmaster Tools Verification -->
+    <meta name="msvalidate.01" content="4A5B2C485618C7FB8CD512C9DB6B43A4" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aadeshdas.github.io/">
+    <meta property="og:title" content="Aadesh Das | Teacher of CS & AI">
+    <meta property="og:description" content="Portfolio of Aadesh Das - PGT Computer Science & AI Educator. Specializing in Python, Artificial Intelligence, and STEM Innovation.">
+    <meta property="og:image" content="https://aadeshdas.github.io/assets/images/og-banner.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://aadeshdas.github.io/">
+    <meta property="twitter:title" content="Aadesh Das | Teacher of CS & AI">
+    <meta property="twitter:description" content="Portfolio of Aadesh Das - PGT Computer Science & AI Educator. Specializing in Python, Artificial Intelligence, and STEM Innovation.">
+    <meta property="twitter:image" content="https://aadeshdas.github.io/assets/images/og-banner.png">
+
+    <!-- Favicon (Updated to External PNG) -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        /* Glass Navigation */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Section Heading Line */
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #d97706;
+        }
+        
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Accordion Animation (Skills) */
+        .skill-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+        .skill-item.active .skill-content {
+            max-height: 150px;
+            opacity: 1;
+            margin-top: 0.5rem;
+        }
+        .skill-item.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        /* Animated Background Blobs */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        /* Hamburger Menu Animation Styles */
+        .hamburger-line {
+            transition: all 0.3s ease-in-out;
+            transform-origin: center;
+        }
+        
+        button.open .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        button.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px); 
+        }
+        button.open .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 450px;
+            opacity: 1;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+        }
+
+        /* Morphing Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #68D391;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #68D391;
+        }
+        
+        /* Icon Morphing */
+        .icon-sun, .icon-moon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+        
+        /* Light Mode State (Default) */
+        .icon-sun { opacity: 1; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+        .icon-moon { opacity: 0; transform: translate(-50%, -50%) rotate(-90deg) scale(0.5); }
+        
+        /* Dark Mode State (Applied via parent class) */
+        .dark .icon-sun { opacity: 0; transform: translate(-50%, -50%) rotate(90deg) scale(0.5); }
+        .dark .icon-moon { opacity: 1; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+
+        /* Full Screen Modal with Zoom */
+        #imageModal {
+            backdrop-filter: blur(8px);
+            touch-action: none;
+        }
+        #modalImage {
+            cursor: zoom-in;
+            transition: transform 0.1s linear; 
+            transform-origin: center center;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            touch-action: none;
+        }
+        #modalImage.zoomed {
+            cursor: grab;
+        }
+        #modalImage.zoomed:active {
+            cursor: grabbing;
+        }
+
+        /* iOS Spinner Animation Styles */
+        /* Removed old div-based CSS, replaced with SVG-compatible animation */
+        .spinner-line {
+            animation: spinner-fade 0.8s linear infinite;
+        }
+        @keyframes spinner-fade {
+            0% { opacity: 1; }
+            100% { opacity: 0.15; }
+        }
+    </style>
+    
+    <!-- Script to check theme immediately to prevent flash -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+</head>
+<body class="antialiased bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 selection:bg-gold-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Name Logo -->
+                <span id="nav-logo" class="text-3xl font-serif font-bold text-slate-900 dark:text-white tracking-wide opacity-0 -translate-y-4 transition-all duration-500 cursor-default">
+                    Aadesh Das<span class="text-gold-600">.</span>
+                </span>
+
+                <!-- Desktop Menu (Smart Spacing) -->
+                <div class="hidden md:flex md:space-x-3 lg:space-x-8 items-center">
+                    <a href="#home" class="md:text-xs lg:text-sm uppercase md:tracking-wide lg:tracking-widest text-slate-600 hover:text-gold-600 dark:text-slate-300 dark:hover:text-gold-500 transition">Home</a>
+                    <a href="#about" class="md:text-xs lg:text-sm uppercase md:tracking-wide lg:tracking-widest text-slate-600 hover:text-gold-600 dark:text-slate-300 dark:hover:text-gold-500 transition">About</a>
+                    <a href="#experience" class="md:text-xs lg:text-sm uppercase md:tracking-wide lg:tracking-widest text-slate-600 hover:text-gold-600 dark:text-slate-300 dark:hover:text-gold-500 transition">Experience</a>
+                    <a href="#education" class="md:text-xs lg:text-sm uppercase md:tracking-wide lg:tracking-widest text-slate-600 hover:text-gold-600 dark:text-slate-300 dark:hover:text-gold-500 transition">Education</a>
+                    <!-- Fixed Order: Projects then Certifications -->
+                    <a href="#projects" class="md:text-xs lg:text-sm uppercase md:tracking-wide lg:tracking-widest text-slate-600 hover:text-gold-600 dark:text-slate-300 dark:hover:text-gold-500 transition">Projects</a>
+                    <a href="#certifications" class="md:text-xs lg:text-sm uppercase md:tracking-wide lg:tracking-widest text-slate-600 hover:text-gold-600 dark:text-slate-300 dark:hover:text-gold-500 transition">Certifications</a>
+                    
+                    <!-- Toggle Switch (Desktop) -->
+                    <button id="theme-toggle-desktop" class="relative h-6 w-14 rounded-full bg-blue-100 dark:bg-slate-700 border border-blue-200 dark:border-slate-600 flex items-center transition-colors duration-300 focus:outline-none cursor-pointer" aria-label="Toggle Dark Mode">
+                        <!-- Track Icons (Small/Inactive) -->
+                        <span class="absolute left-2 text-[10px] text-yellow-500/50"><i class="fas fa-sun"></i></span>
+                        <span class="absolute right-2 text-[10px] text-slate-400/50"><i class="fas fa-moon"></i></span>
+                        
+                        <!-- Sliding Thumb with Bigger Morphing Icon -->
+                        <span class="absolute -left-1 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-white shadow-md transform transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] translate-x-0 dark:translate-x-8 flex items-center justify-center overflow-hidden border border-slate-100">
+                            <i class="fas fa-sun icon-sun text-yellow-500 text-base"></i>
+                            <i class="fas fa-moon icon-moon text-slate-700 text-base"></i>
+                        </span>
+                    </button>
+
+                    <a href="#contact" class="md:px-4 lg:px-6 py-2 border border-slate-900 text-slate-900 dark:border-slate-200 dark:text-slate-200 md:text-xs lg:text-sm font-bold uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition duration-300">
+                        Contact
+                    </a>
+                </div>
+
+                <!-- Mobile Controls -->
+                <div class="md:hidden flex items-center gap-4">
+                    <!-- Toggle Switch (Mobile) -->
+                    <button id="theme-toggle-mobile" class="relative h-6 w-14 rounded-full bg-blue-100 dark:bg-slate-700 border border-blue-200 dark:border-slate-600 flex items-center transition-colors duration-300 focus:outline-none cursor-pointer">
+                        <span class="absolute left-2 text-[10px] text-yellow-500/50"><i class="fas fa-sun"></i></span>
+                        <span class="absolute right-2 text-[10px] text-slate-400/50"><i class="fas fa-moon"></i></span>
+                        <span class="absolute -left-1 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-white shadow-md transform transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] translate-x-0 dark:translate-x-8 flex items-center justify-center overflow-hidden border border-slate-100">
+                            <i class="fas fa-sun icon-sun text-yellow-500 text-base"></i>
+                            <i class="fas fa-moon icon-moon text-slate-700 text-base"></i>
+                        </span>
+                    </button>
+
+                    <button id="mobile-menu-btn" class="flex flex-col justify-center items-center gap-1.5 w-8 h-8 focus:outline-none z-50 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <span class="hamburger-line block w-6 h-0.5 bg-slate-900 dark:bg-white rounded-full"></span>
+                        <span class="hamburger-line block w-6 h-0.5 bg-slate-900 dark:bg-white rounded-full"></span>
+                        <span class="hamburger-line block w-6 h-0.5 bg-slate-900 dark:bg-white rounded-full"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-lg absolute w-full top-20 left-0 -z-10">
+            <div class="px-4 py-6 space-y-3">
+                <a href="#home" class="block px-4 py-3 text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-gold-600 rounded-lg transition">Home</a>
+                <a href="#about" class="block px-4 py-3 text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-gold-600 rounded-lg transition">About</a>
+                <a href="#experience" class="block px-4 py-3 text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-gold-600 rounded-lg transition">Experience</a>
+                <a href="#education" class="block px-4 py-3 text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-gold-600 rounded-lg transition">Education</a>
+                <a href="#projects" class="block px-4 py-3 text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-gold-600 rounded-lg transition">Projects</a>
+                <a href="#certifications" class="block px-4 py-3 text-base font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-gold-600 rounded-lg transition">Certifications</a>
+                <a href="#contact" class="block px-4 py-3 text-base font-bold text-gold-600 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 pb-24 lg:pb-0 overflow-hidden bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+        <!-- Abstract Background Shape -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-100 dark:bg-slate-900 clip-path-slant hidden lg:block transition-colors duration-300" style="clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-8 lg:py-12">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="order-2 lg:order-1 reveal">
+                    <p class="text-gold-600 font-bold tracking-widest uppercase mb-2">Post-Graduate Teacher (CS & AI)</p>
+                    
+                    <!-- Clickable Experience Tag -->
+                    <a href="#experience" class="inline-block px-3 py-1 mb-2 bg-gold-500/10 border border-gold-500 text-gold-600 dark:text-gold-500 rounded-full text-xs font-bold tracking-wide uppercase shadow-sm hover:bg-gold-500 hover:text-white dark:hover:text-white transition-all duration-300 cursor-pointer">
+                        <i class="fas fa-briefcase mr-2"></i> 3 YEARS OF EXPERIENCE
+                    </a>
+
+                    <h1 class="text-5xl md:text-7xl font-serif font-bold text-slate-900 dark:text-white mb-3 leading-tight">
+                        Hello, I'm <br>
+                        <span id="main-name" class="relative inline-block">
+                            Aadesh Das,
+                            <span class="absolute bottom-2 left-0 w-full h-3 bg-gold-400 opacity-30 -z-10"></span>
+                        </span>
+                    </h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-4 max-w-lg leading-relaxed">
+                        A Post-Graduate Teacher specializing in Computer Science and Artificial Intelligence with an M.Sc. degree and corporate industry experience. I focus on bridging the gap between academic theory and real-world application. My goal is simple: to equip students with the practical skills and logical thinking they need to succeed in a tech-driven world.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#contact" class="px-8 py-3 bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-medium rounded hover:bg-slate-800 dark:hover:bg-slate-200 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            Get in Touch
+                        </a>
+                        <a href="assets/documents/Aadesh-Das-CV.pdf" download="Aadesh-Das-CV.pdf" class="px-8 py-3 bg-gold-500 text-white border border-gold-500 font-medium rounded hover:bg-gold-600 hover:border-gold-600 transition flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                        <a href="https://www.linkedin.com/in/aadeshdas" target="_blank" class="px-8 py-3 bg-white text-slate-900 dark:bg-transparent dark:text-white border border-slate-300 dark:border-slate-600 font-medium rounded hover:border-slate-900 dark:hover:border-white transition flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                    </div>
+                    
+                    <div class="mt-5 flex flex-col gap-2">
+                        <!-- Contact Info -->
+                        <div class="flex flex-wrap items-center gap-2 text-lg font-medium text-slate-600 dark:text-slate-400">
+                            <div class="flex items-center gap-2 mr-2">
+                                <i class="fas fa-envelope text-gold-500"></i>
+                                <span class="text-slate-700 dark:text-slate-300">Email:</span>
+                            </div>
+                            <a href="mailto:aadesh.0823@gmail.com" class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded text-sm font-semibold tracking-wide text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:text-gold-500 dark:hover:text-gold-400 transition cursor-pointer">aadesh.0823@gmail.com</a>
+                        </div>
+
+                        <!-- Languages -->
+                        <div class="flex flex-wrap items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                            <div class="flex items-center gap-2 mr-2">
+                                <i class="fas fa-globe text-gold-500"></i>
+                                <span class="text-slate-700 dark:text-slate-300">Fluent in:</span>
+                            </div>
+                            <span class="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-xs font-semibold tracking-wide uppercase text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Bengali (Native)</span>
+                            <span class="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-xs font-semibold tracking-wide uppercase text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">English</span>
+                            <span class="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-xs font-semibold tracking-wide uppercase text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Hindi</span>
+                            <span class="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-xs font-semibold tracking-wide uppercase text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">Assamese (Learning)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image / Visual -->
+                <div class="order-1 lg:order-2 flex justify-center lg:justify-end reveal mt-10 lg:mt-0" style="transition-delay: 200ms;">
+                    <div class="relative w-72 h-72 md:w-96 md:h-96">
+                        <div class="absolute inset-0 border-2 border-gold-500 rounded-full transform translate-x-4 translate-y-4"></div>
+                        <img src="assets/images/profile-photo.jpg" 
+                             onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Aadesh+Das&background=0f172a&color=fff&size=512&font-size=0.33';"
+                             alt="Aadesh Das" 
+                             class="relative w-full h-full object-cover rounded-full shadow-2xl border-4 border-white dark:border-slate-800 transition duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Skills Section -->
+    <section id="about" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-serif font-bold text-slate-900 dark:text-white section-heading mb-4">Expertise & Skills</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-2">
+                    A balanced skillset bridging technical proficiency, modern pedagogy, and leadership.
+                </p>
+                <p class="text-slate-400 dark:text-slate-500 text-xs italic">(Click on any skill to view details)</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- 1. Pedagogy -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500">
+                    <div class="w-12 h-12 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-6 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition">
+                        <i class="fas fa-chalkboard-teacher text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Pedagogy</h3>
+                    
+                    <div class="space-y-3">
+                        <div class="skill-item cursor-pointer group/item" onclick="toggleSkill(this)">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover/item:text-gold-600 transition">CBSE Curriculum</span>
+                                <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="skill-content">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-100 dark:border-slate-700 leading-relaxed">
+                                    Delivering comprehensive instruction in AI & IT, consistently aligning lesson plans with modern CBSE standards.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="skill-item cursor-pointer group/item" onclick="toggleSkill(this)">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover/item:text-gold-600 transition">NEP 2020</span>
+                                <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="skill-content">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-100 dark:border-slate-700 leading-relaxed">
+                                    Integrating relevant mandates of the NEP 2020 into the curriculum where necessary to ensure up-to-date educational practices.
+                                </p>
+                            </div>
+                        </div>
+                         <div class="skill-item cursor-pointer group/item" onclick="toggleSkill(this)">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover/item:text-gold-600 transition">STEM & ATL Innovation</span>
+                                <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="skill-content">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-100 dark:border-slate-700 leading-relaxed">
+                                    Facilitating hands-on sessions in Atal Tinkering Labs. Actively exploring this field with my students to foster curiosity and innovation.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="skill-item cursor-pointer group/item" onclick="toggleSkill(this)">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover/item:text-gold-600 transition">Content Creation</span>
+                                <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="skill-content">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-100 dark:border-slate-700 leading-relaxed">
+                                    Creating engaging educational and non-educational content using design tools for both classroom and house events.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Leadership -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-6 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Leadership</h3>
+                    
+                    <div class="space-y-3">
+                         <div class="skill-item cursor-pointer group/item" onclick="toggleSkill(this)">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover/item:text-gold-600 transition">House Master</span>
+                                <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="skill-content">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-100 dark:border-slate-700 leading-relaxed">
+                                    Leading the house team in various inter-house events, mentoring students in teamwork and discipline.
+                                </p>
+                            </div>
+                        </div>
+                         <div class="skill-item cursor-pointer group/item" onclick="toggleSkill(this)">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover/item:text-gold-600 transition">Student Development</span>
+                                <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="skill-content">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-100 dark:border-slate-700 leading-relaxed">
+                                    Fostering holistic student growth by balancing academic rigor with pastoral care and character building.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="skill-item cursor-pointer group/item" onclick="toggleSkill(this)">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover/item:text-gold-600 transition">Classroom Management</span>
+                                <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="skill-content">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-100 dark:border-slate-700 leading-relaxed">
+                                    Expertise in managing culturally diverse classrooms, specifically with students from various North Eastern states.
+                                </p>
+                            </div>
+                        </div>
+                         <div class="skill-item cursor-pointer group/item" onclick="toggleSkill(this)">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 group-hover/item:text-gold-600 transition">Exam Administration</span>
+                                <i class="fas fa-chevron-down text-xs text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="skill-content">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-100 dark:border-slate-700 leading-relaxed">
+                                    Played an integral role in the Examination Department, ensuring smooth conduct and evaluation of school exams.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Programming -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-6 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Programming</h3>
+                    <div class="space-y-3">
+                         <div class="p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100 dark:border-slate-700 transform transition hover:scale-105 hover:shadow-md hover:border-gold-500 cursor-default">
+                            <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Languages: Python, Java and C/C++</span>
+                        </div>
+                         <div class="p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100 dark:border-slate-700 transform transition hover:scale-105 hover:shadow-md hover:border-gold-500 cursor-default">
+                            <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Web: HTML, CSS & MySQL</span>
+                        </div>
+                         <div class="p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100 dark:border-slate-700 transform transition hover:scale-105 hover:shadow-md hover:border-gold-500 cursor-default">
+                            <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Data Structures and Algorithms (DSA)</span>
+                        </div>
+                        <div class="p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100 dark:border-slate-700 transform transition hover:scale-105 hover:shadow-md hover:border-gold-500 cursor-default">
+                            <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Database Management Systems (DBMS)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. AI & Data -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-xl hover:shadow-xl transition duration-300 group reveal border-t-4 border-b border-x border-slate-200 dark:border-slate-700 hover:border-gold-500 dark:hover:border-gold-500" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 bg-slate-50 dark:bg-slate-700 rounded-full flex items-center justify-center shadow-sm mb-6 text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition">
+                        <i class="fas fa-brain text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">AI & Data</h3>
+                    <div class="space-y-3">
+                         <div class="p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100 dark:border-slate-700 transform transition hover:scale-105 hover:shadow-md hover:border-gold-500 cursor-default">
+                            <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Machine Learning (ML)</span>
+                        </div>
+                         <div class="p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100 dark:border-slate-700 transform transition hover:scale-105 hover:shadow-md hover:border-gold-500 cursor-default">
+                            <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Artificial Intelligence (AI)</span>
+                        </div>
+                         <div class="p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100 dark:border-slate-700 transform transition hover:scale-105 hover:shadow-md hover:border-gold-500 cursor-default">
+                            <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Data Analytics</span>
+                        </div>
+                         <div class="p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100 dark:border-slate-700 transform transition hover:scale-105 hover:shadow-md hover:border-gold-500 cursor-default">
+                            <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Cyber Security</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section (Timeline) -->
+    <section id="experience" class="py-24 bg-slate-900 dark:bg-black text-white relative transition-colors duration-300 border-b border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-serif font-bold text-white section-heading mb-4">Professional Journey</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto mb-6">
+                    A progressive career path evolving from corporate data analytics to academic innovation.
+                </p>
+                <div class="inline-block px-4 py-2 bg-gold-500 text-white rounded-full font-bold text-sm shadow-lg tracking-wide uppercase">
+                    <i class="fas fa-briefcase mr-2"></i> 3 YEARS OF EXPERIENCE
+                </div>
+            </div>
+
+            <div class="space-y-12 relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-slate-700 transform md:-translate-x-1/2 ml-6 md:ml-0"></div>
+
+                <!-- Job 1: KEA -->
+                <div class="relative pl-16 md:pl-0 md:grid md:grid-cols-2 gap-12 items-start reveal group">
+                    <!-- Logo: Current Job (Golden Border) -->
+                    <img src="assets/images/logos/kea-logo.jpg" 
+                         alt="Kaziranga English Academy" 
+                         class="absolute left-6 md:left-1/2 w-12 h-12 rounded-lg border-4 border-gold-500 bg-white object-cover -translate-x-1/2 z-20 group-hover:scale-110 transition duration-300 shadow-md mt-1">
+                    
+                    <div class="md:text-right md:pr-12">
+                        <span class="inline-block py-1 px-3 bg-slate-800 dark:bg-slate-900 text-gold-400 text-xs font-bold rounded mb-2">Apr 2024 - Present</span>
+                        <h3 class="text-xl font-bold text-white">PGT - Computer Science & AI</h3>
+                        <h4 class="text-slate-400 font-serif italic mb-1">Kaziranga English Academy (CBSE)</h4>
+                        <div class="flex items-center justify-start md:justify-end gap-2 mb-3 text-xs text-slate-500">
+                            <i class="fas fa-map-marker-alt text-gold-600"></i> Guwahati, Assam
+                        </div>
+                        <ul class="text-slate-400 text-sm leading-relaxed list-none space-y-2">
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Delivering comprehensive instruction in AI & IT aligned with CBSE standards.</li>
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Facilitating ATL sessions to foster hands-on STEM innovation.</li>
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Serving as House Master and leading teams to victory in multiple events.</li>
+                        </ul>
+                    </div>
+                    <div class="hidden md:block"></div>
+                </div>
+
+                <!-- Job 2: KKDMS -->
+                <div class="relative pl-16 md:pl-0 md:grid md:grid-cols-2 gap-12 items-start reveal group">
+                    <!-- Logo: Previous Job (Slate Border) -->
+                    <img src="assets/images/logos/kkdms-logo.jpg" 
+                         alt="Kamal Kumari Devi Model School" 
+                         class="absolute left-6 md:left-1/2 w-12 h-12 rounded-lg border-4 border-slate-600 bg-white object-cover -translate-x-1/2 z-20 group-hover:scale-110 transition duration-300 shadow-md mt-1">
+                    
+                    <div class="hidden md:block"></div>
+                    
+                    <div class="md:pl-12">
+                        <span class="inline-block py-1 px-3 bg-slate-800 dark:bg-slate-900 text-slate-300 text-xs font-bold rounded mb-2">Jul 2023 - Apr 2024</span>
+                        <h3 class="text-xl font-bold text-white">TGT - Computer Science</h3>
+                        <h4 class="text-slate-400 font-serif italic mb-1">Kamal Kumari Devi Model School (CBSE)</h4>
+                        <div class="flex items-center gap-2 mb-3 text-xs text-slate-500">
+                            <i class="fas fa-map-marker-alt text-gold-600"></i> Raghunathganj, West Bengal
+                        </div>
+                        <ul class="text-slate-400 text-sm leading-relaxed list-none space-y-2">
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Taught Information Technology to students from junior classes up to Class X.</li>
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Advocated for the transition from IT to Computer Science curriculum.</li>
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Managed Examination Department duties for smooth exam administration.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 3: Techno India -->
+                <div class="relative pl-16 md:pl-0 md:grid md:grid-cols-2 gap-12 items-start reveal group">
+                    <!-- Logo: Previous Job (Slate Border) -->
+                    <img src="assets/images/logos/tigsom-logo.jpg" 
+                         alt="Techno India Group" 
+                         class="absolute left-6 md:left-1/2 w-12 h-12 rounded-lg border-4 border-slate-600 bg-white object-cover -translate-x-1/2 z-20 group-hover:scale-110 transition duration-300 shadow-md mt-1">
+                    
+                    <div class="md:text-right md:pr-12">
+                        <span class="inline-block py-1 px-3 bg-slate-800 dark:bg-slate-900 text-slate-300 text-xs font-bold rounded mb-2">Aug 2023 - Jan 2024</span>
+                        <h3 class="text-xl font-bold text-white">Guest Faculty of Computer Science (Part-Time)</h3>
+                        <h4 class="text-slate-400 font-serif italic mb-1">Techno India Group - School of Management</h4>
+                        <div class="flex items-center justify-start md:justify-end gap-2 mb-3 text-xs text-slate-500">
+                            <i class="fas fa-map-marker-alt text-gold-600"></i> Kolkata, West Bengal
+                        </div>
+                        <ul class="text-slate-400 text-sm leading-relaxed list-none space-y-2">
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Instructed BBA students in CS & IT practical applications.</li>
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Conducted specialized induction sessions on Cryptography and Computer Fundamentals.</li>
+                        </ul>
+                    </div>
+                    <div class="hidden md:block"></div>
+                </div>
+
+                <!-- Job 4: Dr. Reddy's -->
+                <div class="relative pl-16 md:pl-0 md:grid md:grid-cols-2 gap-12 items-start reveal group">
+                    <!-- Logo: Previous Job (Slate Border) -->
+                    <img src="assets/images/logos/drl-logo.jpg" 
+                         alt="Dr. Reddy's Laboratories" 
+                         class="absolute left-6 md:left-1/2 w-12 h-12 rounded-lg border-4 border-slate-600 bg-white object-cover -translate-x-1/2 z-20 group-hover:scale-110 transition duration-300 shadow-md mt-1">
+                    
+                    <div class="hidden md:block"></div>
+                    <div class="md:pl-12">
+                        <span class="inline-block py-1 px-3 bg-slate-800 dark:bg-slate-900 text-slate-300 text-xs font-bold rounded mb-2">Jan 2023 - Jun 2023</span>
+                        <h3 class="text-xl font-bold text-white">Digital and Process Excellence (DPEx) Intern</h3>
+                        <h4 class="text-slate-400 font-serif italic mb-1">Dr. Reddy's Laboratories</h4>
+                        <div class="flex items-center gap-2 mb-3 text-xs text-slate-500">
+                            <i class="fas fa-map-marker-alt text-gold-600"></i> Hyderabad, Telangana
+                        </div>
+                        <ul class="text-slate-400 text-sm leading-relaxed list-none space-y-2">
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Worked on the "Golden Tunnel" project applying ML standards.</li>
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Used Data Science to optimize pharmaceutical batch manufacturing.</li>
+                            <li><i class="fas fa-check text-gold-600 mr-2"></i>Gained valuable exposure to corporate culture, understanding how theoretical concepts translate to real-world operations.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-serif font-bold text-slate-900 dark:text-white section-heading mb-4">Education</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                    Building a robust academic foundation to support core computer science concepts and effective teaching.
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-6">
+                <!-- Edu 1 (Unhidden) -->
+                <div class="w-full md:w-[calc(33%-1rem)] bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 transition group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex flex-col gap-2">
+                            <div class="text-gold-500 text-xs font-bold uppercase tracking-wider">2025 - 2027</div>
+                            <span class="px-2 py-1 bg-gold-100 dark:bg-gold-900/30 text-gold-700 dark:text-gold-400 text-[10px] font-bold rounded w-fit">Pursuing</span>
+                        </div>
+                        <!-- B.Ed Logo: Kept as is (Golden border) -->
+                        <img src="assets/images/logos/bsaeu-logo.jpg" alt="BSAEU Logo" class="w-12 h-12 rounded-lg border-4 border-gold-500 p-0.5 bg-white object-contain">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Bachelor of Education (B.Ed.)</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Baba Saheb Ambedkar Education University (BSAEU)</p>
+                    <div class="flex items-center gap-2 mb-4 text-xs text-slate-400">
+                        <i class="fas fa-map-marker-alt text-gold-500"></i> Ballygunge, Kolkata
+                    </div>
+                    <ul class="space-y-1 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-700 pt-3">
+                        <li><i class="fas fa-book-open text-gold-400 mr-1"></i>Pedagogy: Computer Science</li>
+                    </ul>
+                </div>
+
+                <!-- Edu 2 -->
+                <div class="w-full md:w-[calc(33%-1rem)] bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 transition group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex flex-col gap-2">
+                            <div class="text-slate-400 text-xs font-bold uppercase tracking-wider">2021 - 2023</div>
+                            <span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-bold rounded w-fit">Completed</span>
+                        </div>
+                        <!-- Updated Border: Light Grey (slate-200) in Light mode, Dark Grey (slate-600) in Dark mode -->
+                        <img src="assets/images/logos/rkmveri-logo.jpg" alt="RKMVERI Logo" class="w-12 h-12 rounded-lg border-4 border-slate-200 dark:border-slate-600 p-0.5 bg-white object-contain">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">M.Sc. in Computer Science</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Ramakrishna Mission Vivekananda Educational and Research Institute (RKMVERI)</p>
+                    <div class="flex items-center gap-2 mb-4 text-xs text-slate-400">
+                        <i class="fas fa-map-marker-alt text-gold-500"></i> Belur, Howrah
+                    </div>
+                    <ul class="space-y-1 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-700 pt-3">
+                        <li><i class="fas fa-graduation-cap text-gold-400 mr-1"></i>CGPA: 6.940</li>
+                    </ul>
+                </div>
+                <!-- Edu 3 -->
+                <div class="w-full md:w-[calc(33%-1rem)] bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 transition group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex flex-col gap-2">
+                            <div class="text-slate-400 text-xs font-bold uppercase tracking-wider">2018 - 2021</div>
+                            <span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-bold rounded w-fit">Completed</span>
+                        </div>
+                        <!-- Updated Border -->
+                        <img src="assets/images/logos/cu-logo.jpg" alt="University of Calcutta Logo" class="w-12 h-12 rounded-lg border-4 border-slate-200 dark:border-slate-600 p-0.5 bg-white object-contain">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">B.Sc. (Honours) in Computer Science</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">University of Calcutta (CU)</p>
+                    <div class="flex items-center gap-2 mb-4 text-xs text-slate-400">
+                        <i class="fas fa-map-marker-alt text-gold-500"></i> College Street, Kolkata
+                    </div>
+                    <ul class="space-y-1 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-700 pt-3">
+                        <li><i class="fas fa-graduation-cap text-gold-400 mr-1"></i>CGPA: 7.924</li>
+                    </ul>
+                </div>
+                <!-- Edu 4 -->
+                <div class="w-full md:w-[calc(33%-1rem)] bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 transition group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex flex-col gap-2">
+                            <div class="text-slate-400 text-xs font-bold uppercase tracking-wider">2018</div>
+                            <span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-bold rounded w-fit">Completed</span>
+                        </div>
+                        <!-- Updated Border -->
+                        <img src="assets/images/logos/sjhs-logo.jpg" alt="St. Jude's Logo" class="w-12 h-12 rounded-lg border-4 border-slate-200 dark:border-slate-600 p-0.5 bg-white object-contain">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Higher-Secondary (ISC)</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">St. Jude's High School</p>
+                    <div class="flex items-center gap-2 mb-4 text-xs text-slate-400">
+                        <i class="fas fa-map-marker-alt text-gold-500"></i> Madhyamgram, West Bengal
+                    </div>
+                    <ul class="space-y-1 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-700 pt-3">
+                        <li><i class="fas fa-percentage text-gold-400 mr-1"></i>Percentage: 70.50%</li>
+                    </ul>
+                </div>
+                <!-- Edu 5 -->
+                <div class="w-full md:w-[calc(33%-1rem)] bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 transition group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex flex-col gap-2">
+                            <div class="text-slate-400 text-xs font-bold uppercase tracking-wider">2016</div>
+                            <span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-bold rounded w-fit">Completed</span>
+                        </div>
+                        <!-- Updated Border -->
+                        <img src="assets/images/logos/nms-logo.jpg" alt="National Model School Logo" class="w-12 h-12 rounded-lg border-4 border-slate-200 dark:border-slate-600 p-0.5 bg-white object-contain">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Secondary (ICSE)</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">National Model School</p>
+                    <div class="flex items-center gap-2 mb-4 text-xs text-slate-400">
+                        <i class="fas fa-map-marker-alt text-gold-500"></i> Sodepur, West Bengal
+                    </div>
+                    <ul class="space-y-1 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-700 pt-3">
+                        <li><i class="fas fa-percentage text-gold-400 mr-1"></i>Percentage: 73.67%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-serif font-bold text-slate-900 dark:text-white section-heading mb-4">Key Projects</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Blending technical development with real-world problem solving.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group relative overflow-hidden rounded-xl bg-slate-900 text-white shadow-lg reveal border border-transparent dark:border-slate-600 dark:bg-slate-900">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent opacity-90"></div>
+                    <div class="relative p-8 h-full flex flex-col justify-start min-h-[300px] text-left">
+                        <div class="mb-4">
+                            <span class="text-gold-500 text-xs font-bold uppercase tracking-wider">Python + ML + DataRobot</span>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold mb-3">Golden Tunnel</h3>
+                        <p class="text-slate-300 text-sm mb-6">
+                            For this industry live project, I developed ML and visualization models to optimize pharmaceutical batch manufacturing, preventing bad batches.
+                        </p>
+                        <div class="mt-auto w-12 h-1 bg-gold-500 rounded transition-all duration-300 group-hover:w-24"></div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group relative overflow-hidden rounded-xl bg-slate-900 text-white shadow-lg reveal border border-transparent dark:border-slate-600 dark:bg-slate-900" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent opacity-90"></div>
+                    <div class="relative p-8 h-full flex flex-col justify-start min-h-[300px] text-left">
+                        <div class="mb-4">
+                            <span class="text-gold-500 text-xs font-bold uppercase tracking-wider">Java + Python + AI</span>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold mb-3">Rescue App</h3>
+                        <p class="text-slate-300 text-sm mb-6">
+                            I built an Android Safety System with AI-driven facial recognition and real-time location sharing, integrating Python backend logic.
+                        </p>
+                        <div class="mt-auto w-12 h-1 bg-gold-500 rounded transition-all duration-300 group-hover:w-24"></div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group relative overflow-hidden rounded-xl bg-slate-900 text-white shadow-lg reveal border border-transparent dark:border-slate-600 dark:bg-slate-900" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-800 to-transparent opacity-90"></div>
+                    <div class="relative p-8 h-full flex flex-col justify-start min-h-[300px] text-left">
+                        <div class="mb-4">
+                            <span class="text-gold-500 text-xs font-bold uppercase tracking-wider">HTML + CSS + PHP</span>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold mb-3">Easy Vote</h3>
+                        <p class="text-slate-300 text-sm mb-6">
+                            I created a secure web-based voting portal with admin authentication, demonstrating frontend design and server-side scripting.
+                        </p>
+                        <div class="mt-auto w-12 h-1 bg-gold-500 rounded transition-all duration-300 group-hover:w-24"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-serif font-bold text-slate-900 dark:text-white section-heading mb-4">Certifications & Learning</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-2">
+                    Committed to continuous professional development in both technology and educational standards.
+                </p>
+                <p class="text-slate-400 dark:text-slate-500 text-xs italic">(Click topic to see certificate credentials)</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Academic Coursework -->
+                <div class="p-8 bg-white dark:bg-slate-950 rounded-xl shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 hover:shadow-lg hover:border-gold-500 dark:hover:border-gold-500 transition group flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center text-gold-500">
+                            <i class="fas fa-university text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Specialized Coursework</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Advanced academic modules completed during M.Sc. residency (NPTEL), focusing on theoretical depth and technical application.
+                    </p>
+                    <div class="space-y-2">
+                        <!-- Cert 1 -->
+                        <div class="flex items-center justify-between p-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer group/cert" onclick="openModal('assets/images/certificates/nptel-star.jpg')">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-star text-gold-500 text-xs"></i>
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-200">Recognized as NPTEL Star</span>
+                            </div>
+                            <i class="fas fa-eye text-xs text-gold-500"></i>
+                        </div>
+                        <!-- Cert 2 -->
+                        <div class="flex items-center justify-between p-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer group/cert" onclick="openModal('assets/images/certificates/database-management-systems.jpg')">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-xs"></i>
+                                <span class="text-sm text-slate-500 dark:text-slate-400 group-hover/cert:text-slate-800 dark:group-hover/cert:text-slate-200 transition">Database Management Systems <span class="font-bold">(Top 2%)</span></span>
+                            </div>
+                            <i class="fas fa-eye text-xs text-gold-500"></i>
+                        </div>
+                        <!-- Cert 3 -->
+                        <div class="flex items-center justify-between p-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer group/cert" onclick="openModal('assets/images/certificates/cryptography-network-security.jpg')">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-xs"></i>
+                                <span class="text-sm text-slate-500 dark:text-slate-400 group-hover/cert:text-slate-800 dark:group-hover/cert:text-slate-200 transition">Cryptography & Network Security</span>
+                            </div>
+                            <i class="fas fa-eye text-xs text-gold-500"></i>
+                        </div>
+                        <!-- Cert 4 -->
+                        <div class="flex items-center justify-between p-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer group/cert" onclick="openModal('assets/images/certificates/cloud-computing.jpg')">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-xs"></i>
+                                <span class="text-sm text-slate-500 dark:text-slate-400 group-hover/cert:text-slate-800 dark:group-hover/cert:text-slate-200 transition">Cloud Computing</span>
+                            </div>
+                            <i class="fas fa-eye text-xs text-gold-500"></i>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+                         <p class="text-xs text-slate-400 italic">Additional NPTEL certifications are available upon request.</p>
+                    </div>
+                </div>
+
+                <!-- Professional Development -->
+                <div class="p-8 bg-white dark:bg-slate-950 rounded-xl shadow-md border border-slate-300 dark:border-slate-700 reveal hover:-translate-y-1 hover:shadow-lg hover:border-gold-500 dark:hover:border-gold-500 transition group flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center text-gold-500">
+                            <i class="fas fa-certificate text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Professional Development</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        Continuous engagement with mandatory education standards and pedagogical workshops via CBSE and various non-CBSE trainings.
+                    </p>
+                    <div class="space-y-2">
+                        <!-- Cert 1 -->
+                        <div class="flex items-center justify-between p-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer group/cert" onclick="openModal('assets/images/certificates/learning-outcomes-pedagogies.jpg')">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-xs"></i>
+                                <span class="text-sm text-slate-500 dark:text-slate-400 group-hover/cert:text-slate-800 dark:group-hover/cert:text-slate-200 transition">Learning Outcomes and Pedagogies</span>
+                            </div>
+                            <i class="fas fa-eye text-xs text-gold-500"></i>
+                        </div>
+                        <!-- Cert 2 -->
+                        <div class="flex items-center justify-between p-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer group/cert" onclick="openModal('assets/images/certificates/life-skills-advanced.jpg')">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-xs"></i>
+                                <span class="text-sm text-slate-500 dark:text-slate-400 group-hover/cert:text-slate-800 dark:group-hover/cert:text-slate-200 transition">Life Skills (Advanced)</span>
+                            </div>
+                            <i class="fas fa-eye text-xs text-gold-500"></i>
+                        </div>
+                        <!-- Cert 3 -->
+                        <div class="flex items-center justify-between p-2 rounded hover:bg-slate-50 dark:hover:bg-slate-800 transition cursor-pointer group/cert" onclick="openModal('assets/images/certificates/active-learning.jpg')">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-xs"></i>
+                                <span class="text-sm text-slate-500 dark:text-slate-400 group-hover/cert:text-slate-800 dark:group-hover/cert:text-slate-200 transition">Active Learning</span>
+                            </div>
+                            <i class="fas fa-eye text-xs text-gold-500"></i>
+                        </div>
+                    </div>
+                     <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+                         <p class="text-xs text-slate-400 italic">Displaying certificates for the three most recent trainings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900 scroll-mt-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="text-3xl font-serif font-bold text-white section-heading mb-8">Ready to Collaborate?</h2>
+            
+            <p class="text-slate-500 mb-8">
+                Send me a message directly via the form below, or connect through my social links.
+            </p>
+
+            <!-- Web3Forms Contact Form -->
+            <form action="https://api.web3forms.com/submit" method="POST" class="max-w-3xl mx-auto bg-slate-900 p-8 rounded-xl border border-slate-800 shadow-lg mb-12 text-left space-y-4">
+                <input type="hidden" name="access_key" value="2e4a3a10-0a76-407e-b133-8625a933d7f3">
+                <input type="hidden" name="subject" value="New Message from Portfolio Website">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="name" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Name</label>
+                        <input type="text" name="name" id="name" required class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-gold-500 transition placeholder-slate-600" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Email</label>
+                        <input type="email" name="email" id="email" required class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-gold-500 transition placeholder-slate-600" placeholder="your@email.com">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Message</label>
+                    <textarea name="message" id="message" rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-gold-500 transition placeholder-slate-600 resize-none" placeholder="How can we work together?"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 rounded transition-all duration-300 shadow-lg hover:shadow-slate-900/50 flex items-center justify-center gap-2">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+            
+            <!-- Social & Download Links -->
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12 flex-wrap">
+                <a href="assets/documents/Aadesh-Das-CV.pdf" download="Aadesh-Das-CV.pdf" class="flex items-center gap-3 hover:text-white transition">
+                    <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-gold-500">
+                        <i class="fas fa-file-download"></i>
+                    </div>
+                    Download CV
+                </a>
+                <a href="mailto:aadesh.0823@gmail.com" class="flex items-center gap-3 hover:text-white transition">
+                    <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-gold-500">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    aadesh.0823@gmail.com
+                </a>
+                <a href="https://linkedin.com/in/aadeshdas" class="flex items-center gap-3 hover:text-white transition" target="_blank">
+                    <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-gold-500">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    linkedin.com/in/aadeshdas
+                </a>
+                <a href="https://aadeshdas.github.io" class="flex items-center gap-3 hover:text-white transition">
+                    <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-gold-500">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    aadeshdas.github.io
+                </a>
+            </div>
+
+            <p class="text-sm border-t border-slate-900 pt-8 mt-8">
+                &copy; <script>document.write(new Date().getFullYear())</script> Aadesh Das. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" id="back-to-top" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-gold-500 hover:bg-gold-600 text-white p-4 rounded-full shadow-xl transition-all duration-300 opacity-0 translate-y-10 z-40 focus:outline-none pointer-events-none flex items-center justify-center w-12 h-12 md:w-14 md:h-14">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Full Screen Image Modal -->
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-slate-50/95 dark:bg-black/95 backdrop-blur-md flex flex-col transition-opacity duration-300" onclick="closeModal()">
+        <!-- Flexible Image Container with Padding -->
+        <div class="flex-1 flex items-center justify-center min-h-0 relative w-full p-4 md:p-8">
+             
+             <!-- Loading Animation (Hidden by default, toggled by JS) -->
+             <div id="modalLoader" class="absolute inset-0 flex items-center justify-center z-50 hidden">
+                <!-- SVG Based Modern Spinner (8 Blades) -->
+                <svg class="w-16 h-16 text-slate-800 dark:text-slate-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g class="origin-center">
+                        <!-- 8 Pill-shaped blades with rounded caps -->
+                        <rect x="11" y="1" width="2" height="6" rx="1" fill="currentColor" class="spinner-line" style="animation-delay: -0.7s; transform: rotate(0deg); transform-origin: 12px 12px;" />
+                        <rect x="11" y="1" width="2" height="6" rx="1" fill="currentColor" class="spinner-line" style="animation-delay: -0.6s; transform: rotate(45deg); transform-origin: 12px 12px;" />
+                        <rect x="11" y="1" width="2" height="6" rx="1" fill="currentColor" class="spinner-line" style="animation-delay: -0.5s; transform: rotate(90deg); transform-origin: 12px 12px;" />
+                        <rect x="11" y="1" width="2" height="6" rx="1" fill="currentColor" class="spinner-line" style="animation-delay: -0.4s; transform: rotate(135deg); transform-origin: 12px 12px;" />
+                        <rect x="11" y="1" width="2" height="6" rx="1" fill="currentColor" class="spinner-line" style="animation-delay: -0.3s; transform: rotate(180deg); transform-origin: 12px 12px;" />
+                        <rect x="11" y="1" width="2" height="6" rx="1" fill="currentColor" class="spinner-line" style="animation-delay: -0.2s; transform: rotate(225deg); transform-origin: 12px 12px;" />
+                        <rect x="11" y="1" width="2" height="6" rx="1" fill="currentColor" class="spinner-line" style="animation-delay: -0.1s; transform: rotate(270deg); transform-origin: 12px 12px;" />
+                        <rect x="11" y="1" width="2" height="6" rx="1" fill="currentColor" class="spinner-line" style="animation-delay: 0s;   transform: rotate(315deg); transform-origin: 12px 12px;" />
+                    </g>
+                </svg>
+             </div>
+
+             <!-- Image with Opacity Transition -->
+             <!-- Added transition-opacity duration-500 for smooth fade-in -->
+             <img id="modalImage" class="object-contain rounded-xl shadow-2xl border-4 border-slate-800 dark:border-slate-200 transition-transform transition-opacity duration-500 cursor-grab opacity-0" style="max-width: 100%; max-height: 100%;" src="" alt="Certificate Preview" onclick="event.stopPropagation()">
+        </div>
+        
+        <!-- Bottom Controls Container -->
+        <div class="flex-none z-[101] p-4 flex gap-4 justify-center items-center w-full bg-slate-200/50 dark:bg-black/50 backdrop-blur-sm" onclick="event.stopPropagation()">
+            <button onclick="zoomOut()" class="w-12 h-12 flex items-center justify-center bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200 rounded-full shadow-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition font-bold text-xl"><i class="fas fa-search-minus"></i></button>
+            <button onclick="closeModal()" class="w-32 py-3 bg-white text-slate-900 dark:bg-slate-800 dark:text-white rounded-full font-bold hover:bg-slate-100 dark:hover:bg-slate-700 transition shadow-lg text-lg border border-slate-200 dark:border-slate-700">Close</button>
+            <button onclick="zoomIn()" class="w-12 h-12 flex items-center justify-center bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200 rounded-full shadow-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition font-bold text-xl"><i class="fas fa-search-plus"></i></button>
+        </div>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Theme Toggle Logic
+        const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        if (themeToggleDesktop) {
+            themeToggleDesktop.addEventListener('click', toggleTheme);
+        }
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleTheme);
+        }
+
+        // Mobile Menu Logic
+        const navbar = document.getElementById('navbar');
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const menuLinks = menu.querySelectorAll('a');
+        const body = document.body;
+
+        function openMenu() {
+            menu.classList.add('open');
+            btn.classList.add('open');
+            body.classList.add('overflow-hidden'); // Lock background scroll
+        }
+
+        function closeMenu() {
+            menu.classList.remove('open');
+            btn.classList.remove('open');
+            body.classList.remove('overflow-hidden'); // Restore background scroll
+        }
+
+        btn.addEventListener('click', () => {
+            if (menu.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        // Close menu when a link is clicked
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        // Close menu when clicking outside the NAVBAR (Title bar + Menu)
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && menu.classList.contains('open')) {
+                closeMenu();
+            }
+        });
+
+        // Smart Touch Logic: 
+        // If touching outside the navbar (content area), close it immediately.
+        document.addEventListener('touchstart', (e) => {
+            if (menu.classList.contains('open') && !navbar.contains(e.target)) {
+                closeMenu();
+            }
+        }, { passive: true });
+
+        // Fade-in Name in Navbar Logic
+        const navLogo = document.getElementById('nav-logo');
+        const heroName = document.getElementById('main-name');
+        
+        window.addEventListener('scroll', () => {
+            // Handle Navbar Name Fade
+            const rect = heroName.getBoundingClientRect();
+            if (rect.top < 85) { 
+                navLogo.classList.remove('opacity-0', '-translate-y-4');
+                navLogo.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                navLogo.classList.remove('opacity-100', 'translate-y-0');
+                navLogo.classList.add('opacity-0', '-translate-y-4');
+            }
+
+            // Handle Back to Top Button
+            const contactSection = document.getElementById('contact');
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            const contactRect = contactSection.getBoundingClientRect();
+            // Show button when contact section is reached
+            if (contactRect.top <= window.innerHeight) {
+                 backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                 backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            } else {
+                 backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                 backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }
+        });
+
+        // Skill Toggle Function
+        function toggleSkill(element) {
+            // Close all other skills
+            const allSkills = document.querySelectorAll('.skill-item');
+            allSkills.forEach(skill => {
+                if (skill !== element) {
+                    skill.classList.remove('active');
+                }
+            });
+            // Toggle clicked skill
+            element.classList.toggle('active');
+        }
+
+        // Modal Logic with Zoom, Pan, and Loading
+        let scale = 1;
+        let isDragging = false;
+        let startX, startY, translateX = 0, translateY = 0;
+        let initialDistance = 0;
+
+        const modal = document.getElementById('imageModal');
+        const img = document.getElementById('modalImage');
+        const loader = document.getElementById('modalLoader');
+
+        function updateTransform() {
+            // ... existing updateTransform logic ...
+            if (scale > 1) {
+                const scaledWidth = img.offsetWidth * scale;
+                const scaledHeight = img.offsetHeight * scale;
+                
+                const viewportWidth = img.parentElement.clientWidth;
+                const viewportHeight = img.parentElement.clientHeight;
+
+                const maxTranslateX = (scaledWidth - viewportWidth) / 2;
+                const maxTranslateY = (scaledHeight - viewportHeight) / 2;
+
+                if (scaledWidth > viewportWidth) {
+                    translateX = Math.max(-maxTranslateX, Math.min(maxTranslateX, translateX));
+                } else {
+                    translateX = 0;
+                }
+
+                if (scaledHeight > viewportHeight) {
+                    translateY = Math.max(-maxTranslateY, Math.min(maxTranslateY, translateY));
+                } else {
+                    translateY = 0;
+                }
+            } else {
+                translateX = 0;
+                translateY = 0;
+            }
+
+            img.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+
+        function openModal(imageSrc) {
+            // 1. Reset state
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+            
+            // Show Loader, Hide Image (Opacity 0)
+            loader.classList.remove('hidden');
+            img.style.opacity = '0';
+            
+            // Reset Zoom
+            scale = 1;
+            translateX = 0;
+            translateY = 0;
+            updateTransform();
+
+            const src = imageSrc ? imageSrc : 'https://placehold.co/800x600/1e293b/FFF?text=Certificate+Preview';
+
+            // 2. Setup Promises
+            // Promise A: Minimum wait time of 1 second
+            const waitPromise = new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Promise B: Image Loading
+            const loadPromise = new Promise(resolve => {
+                img.onload = resolve;
+                img.onerror = resolve; // Resolve on error too so it doesn't get stuck
+                img.src = src; 
+                if (img.complete) resolve(); // Handle cached images
+            });
+
+            // 3. Wait for BOTH to finish
+            Promise.all([waitPromise, loadPromise]).then(() => {
+                loader.classList.add('hidden');
+                img.style.opacity = '1';
+            });
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = ''; 
+            // Clear src to prevent flickering old image on next open
+            setTimeout(() => { img.src = ''; }, 300);
+        }
+
+        function zoomIn() {
+            scale += 0.5;
+            if (scale > 5) scale = 5;
+            updateTransform();
+        }
+
+        function zoomOut() {
+            scale -= 0.5;
+            if (scale <= 0.2) scale = 0.2; 
+            
+            if (scale <= 1) {
+                translateX = 0;
+                translateY = 0;
+            }
+            updateTransform();
+        }
+
+        // ... rest of the existing event listeners (wheel, drag, touch, reveal) ...
+        modal.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            scale += e.deltaY * -0.001;
+            scale = Math.min(Math.max(0.2, scale), 5); 
+            if (scale <= 1) {
+                translateX = 0;
+                translateY = 0;
+            }
+            updateTransform();
+        });
+
+        img.addEventListener('mousedown', startDrag);
+        img.addEventListener('touchstart', startDrag);
+
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag);
+
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('touchend', endDrag);
+
+        function startDrag(e) {
+            if (scale <= 1) return;
+            
+            isDragging = true;
+            startX = e.clientX || e.touches[0].clientX;
+            startY = e.clientY || e.touches[0].clientY;
+            img.style.cursor = 'grabbing';
+            e.preventDefault();
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            e.preventDefault(); 
+            
+            const x = e.clientX || e.touches[0].clientX;
+            const y = e.clientY || e.touches[0].clientY;
+            
+            const dx = x - startX;
+            const dy = y - startY;
+            
+            translateX += dx;
+            translateY += dy;
+
+            startX = x;
+            startY = y;
+            
+            updateTransform();
+        }
+
+        function endDrag() {
+            isDragging = false;
+            img.style.cursor = 'grab';
+        }
+
+        modal.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                initialDistance = Math.hypot(
+                    e.touches[0].pageX - e.touches[1].pageX,
+                    e.touches[0].pageY - e.touches[1].pageY
+                );
+            }
+        });
+
+        modal.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2) {
+                e.preventDefault();
+                const currentDistance = Math.hypot(
+                    e.touches[0].pageX - e.touches[1].pageX,
+                    e.touches[0].pageY - e.touches[1].pageY
+                );
+                
+                if (initialDistance > 0) {
+                    const delta = currentDistance - initialDistance;
+                    scale += delta * 0.01;
+                    scale = Math.min(Math.max(0.2, scale), 5);
+                    if (scale <= 1) {
+                        translateX = 0;
+                        translateY = 0;
+                    }
+                    updateTransform();
+                }
+                initialDistance = currentDistance;
+            }
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Scroll Reveal
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+</html>
