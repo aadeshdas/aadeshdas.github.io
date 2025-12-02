@@ -7,5 +7,6 @@ Allow: /favicon.png
 Allow: /assets/images/
 
 Disallow: /assets/documents/
+Disallow: /index-testing.html
 
 Sitemap: https://aadeshdas.github.io/sitemap.xml
