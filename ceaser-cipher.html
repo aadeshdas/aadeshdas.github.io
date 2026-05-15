@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher | Cryptography Project</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts for Portfolio Vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Styles to augment Tailwind */
+        body {
+            background-color: #fcfcfc;
+            selection-background-color: #fde68a; /* amber-200 */
+        }
+        .serif-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        .wheel-font {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+        }
+        textarea {
+            resize: none;
+            outline: none;
+        }
+        textarea:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        /* Hide scrollbar for cleaner textareas */
+        textarea::-webkit-scrollbar {
+            width: 6px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-slate-800 font-sans relative overflow-x-hidden min-h-screen">
+
+    <!-- Background Split mimicking the portfolio -->
+    <div class="absolute inset-0 z-0 pointer-events-none flex">
+        <div class="w-[45%] md:w-[55%] h-full bg-white"></div>
+        <div class="w-[55%] md:w-[45%] h-full bg-[#f4f6f8] shadow-[inset_10px_0_20px_rgba(0,0,0,0.02)]" style="clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%)"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 md:px-12 pb-16 pt-16 relative z-10">
+        
+        <!-- Header styled like the portfolio -->
+        <header class="mb-12 max-w-2xl">
+            <div class="inline-flex items-center text-amber-500 font-bold tracking-widest uppercase text-xs mb-4 border border-amber-200 bg-amber-50 px-3 py-1 rounded-sm">
+                <i data-lucide="lock" class="w-3 h-3 mr-2"></i>
+                Cryptography Project
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-6 serif-heading">
+                Caesar Cipher.
+            </h1>
+            <p class="text-slate-600 text-lg leading-relaxed">
+                A classic encryption tool specializing in letter-shifting algorithms. 
+                Drag the inner wheel to set the shift key, and type below to see real-time encryption.
+            </p>
+        </header>
+
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            <!-- Left Column: Interactive Cipher Disk -->
+            <div class="lg:col-span-5 flex flex-col items-center lg:items-start relative">
+                
+                <div class="mb-6 flex items-center justify-between w-full max-w-[400px]">
+                    <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 flex items-center">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4 mr-2"></i>
+                        Interactive Wheel
+                    </h2>
+                    <div class="text-amber-600 font-bold text-lg" id="shift-display">
+                        Shift: 3
+                    </div>
+                </div>
+
+                <!-- The SVG Wheel Container -->
+                <div 
+                    class="relative w-full max-w-[400px] aspect-square select-none touch-none rounded-full"
+                    style="filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12))"
+                >
+                    <!-- Highlight wedge at the top -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-12 bg-amber-400 opacity-60 z-0 pointer-events-none" 
+                         style="clip-path: polygon(50% 100%, 0 0, 100% 0)"></div>
+
+                    <svg 
+                        viewBox="0 0 400 400" 
+                        class="w-full h-full cursor-grab active:cursor-grabbing overflow-visible z-10 relative"
+                        id="wheel-svg"
+                    >
+                        <!-- Outer Ring (Plaintext) - Static -->
+                        <g id="outer-ring-group">
+                            <circle cx="200" cy="200" r="190" fill="#cceb9b" stroke="#1f2937" stroke-width="4" />
+                            <circle cx="200" cy="200" r="140" fill="none" stroke="#1f2937" stroke-width="3" />
+                            <!-- Outer Slices injected by JS -->
+                        </g>
+
+                        <!-- Inner Ring (Ciphertext) - Rotatable -->
+                        <!-- Transform-origin is critically set here to fix the offset bug from image 3 -->
+                        <g id="inner-ring-group" style="transform-origin: 200px 200px; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);">
+                            <circle cx="200" cy="200" r="140" fill="#d7b5e8" />
+                            <circle cx="200" cy="200" r="80" fill="none" stroke="#1f2937" stroke-width="3" />
+                            <!-- Inner Slices injected by JS -->
+                        </g>
+
+                        <!-- Center Hub -->
+                        <circle cx="200" cy="200" r="80" fill="#ffffff" stroke="#1f2937" stroke-width="3" pointer-events="none"/>
+                        <circle cx="200" cy="200" r="12" fill="#0f172a" pointer-events="none"/>
+                        <circle cx="200" cy="200" r="6" fill="#475569" pointer-events="none"/>
+                        <text x="200" y="240" text-anchor="middle" class="text-xs font-bold text-slate-800 pointer-events-none tracking-widest uppercase">Drag Me</text>
+                    </svg>
+                </div>
+
+                <!-- Shift Controls -->
+                <div class="mt-10 w-full max-w-[400px]">
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <button id="btn-decrease" class="p-2 text-slate-400 hover:text-slate-900 transition-colors">
+                            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                        </button>
+                        
+                        <input 
+                            type="range" 
+                            id="shift-slider"
+                            min="0" 
+                            max="25" 
+                            value="3" 
+                            class="flex-1 h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-900"
+                        />
+                        
+                        <button id="btn-increase" class="p-2 text-slate-400 hover:text-slate-900 transition-colors">
+                            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Text Inputs -->
+            <div class="lg:col-span-7 space-y-6 lg:mt-4">
+                
+                <!-- Plaintext Box -->
+                <div class="bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 relative group transition-shadow hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <label for="plain-input" class="text-sm font-bold tracking-widest uppercase text-slate-900 flex items-center">
+                            <i data-lucide="unlock" class="w-4 h-4 mr-2 text-amber-500"></i>
+                            Plaintext
+                        </label>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 border border-slate-200 px-2 py-1 bg-slate-50">Outer Ring</span>
+                    </div>
+                    <textarea
+                        id="plain-input"
+                        placeholder="Enter your message here..."
+                        class="w-full h-28 p-0 bg-transparent border-none focus:ring-0 text-2xl md:text-3xl font-serif placeholder:text-slate-300 text-slate-900"
+                        spellcheck="false"
+                    ></textarea>
+                </div>
+
+                <!-- Link/Refresh Divider -->
+                <div class="flex justify-start pl-8 -my-2 relative z-10">
+                    <div class="bg-white text-slate-400 border border-slate-100 p-2 shadow-sm rounded-full">
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- Ciphertext Box -->
+                <div class="bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 relative group transition-shadow hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <label for="cipher-input" class="text-sm font-bold tracking-widest uppercase text-slate-900 flex items-center">
+                            <i data-lucide="lock" class="w-4 h-4 mr-2 text-amber-500"></i>
+                            Ciphertext
+                        </label>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 border border-slate-200 px-2 py-1 bg-slate-50">Inner Ring</span>
+                    </div>
+                    <textarea
+                        id="cipher-input"
+                        placeholder="Encrypted output..."
+                        class="w-full h-28 p-0 bg-transparent border-none focus:ring-0 text-2xl md:text-3xl font-mono placeholder:text-slate-300 placeholder:font-serif text-slate-900 tracking-tight"
+                        spellcheck="false"
+                    ></textarea>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="flex flex-wrap gap-4 pt-6">
+                    <button
+                        id="btn-clear"
+                        class="bg-[#0f172a] text-white px-8 py-3.5 text-sm font-semibold hover:bg-slate-800 transition-colors shadow-md rounded-sm"
+                    >
+                        Clear Fields
+                    </button>
+                    <button
+                        id="btn-random"
+                        class="bg-[#f59e0b] text-white px-8 py-3.5 text-sm font-semibold hover:bg-amber-600 transition-colors shadow-md flex items-center rounded-sm"
+                    >
+                        <i data-lucide="refresh-cw" class="w-4 h-4 mr-2"></i>
+                        Random Shift
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript Logic -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Constants
+        const ALPHABET_SIZE = 26;
+        const SLICE_ANGLE = 360 / ALPHABET_SIZE;
+
+        // State
+        let currentShift = 3;
+        let sourceText = '';
+        let sourceType = 'plain'; // 'plain' or 'cipher'
+        
+        // Dragging State
+        let isDragging = false;
+        let currentRotation = -3 * SLICE_ANGLE;
+        let dragStartAngle = 0;
+        let dragStartRotation = 0;
+
+        // DOM Elements
+        const wheelSvg = document.getElementById('wheel-svg');
+        const innerRingGroup = document.getElementById('inner-ring-group');
+        const outerRingGroup = document.getElementById('outer-ring-group');
+        const shiftSlider = document.getElementById('shift-slider');
+        const shiftDisplay = document.getElementById('shift-display');
+        const plainInput = document.getElementById('plain-input');
+        const cipherInput = document.getElementById('cipher-input');
+
+        // --- 1. SVG Wheel Generation ---
+        function generateSlicesHTML(radius, innerRadius) {
+            let html = '';
+            const textRadius = innerRadius + (radius - innerRadius) / 2;
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+            
+            letters.forEach((char, i) => {
+                const angle = i * SLICE_ANGLE - 90; // -90 puts A at the top
+                
+                // Text position
+                const textX = 200 + textRadius * Math.cos(angle * Math.PI / 180);
+                const textY = 200 + textRadius * Math.sin(angle * Math.PI / 180);
+                
+                // Divider line position
+                const lineAngle = angle - SLICE_ANGLE / 2;
+                const lx1 = 200 + innerRadius * Math.cos(lineAngle * Math.PI / 180);
+                const ly1 = 200 + innerRadius * Math.sin(lineAngle * Math.PI / 180);
+                const lx2 = 200 + radius * Math.cos(lineAngle * Math.PI / 180);
+                const ly2 = 200 + radius * Math.sin(lineAngle * Math.PI / 180);
+
+                html += `
+                    <g>
+                        <line x1="${lx1}" y1="${ly1}" x2="${lx2}" y2="${ly2}" stroke="#1f2937" stroke-width="2" />
+                        <text x="${textX}" y="${textY}" text-anchor="middle" dominant-baseline="central" 
+                              transform="rotate(${angle + 90}, ${textX}, ${textY})" 
+                              class="text-xl font-bold wheel-font" fill="#111827" pointer-events="none">${char}</text>
+                    </g>
+                `;
+            });
+            return html;
+        }
+
+        // Inject SVG contents
+        outerRingGroup.innerHTML += generateSlicesHTML(190, 140);
+        innerRingGroup.innerHTML += generateSlicesHTML(140, 80);
+
+
+        // --- 2. Cryptography Logic ---
+        function shiftChar(char, shiftAmount) {
+            const code = char.charCodeAt(0);
+            // Uppercase A-Z
+            if (code >= 65 && code <= 90) {
+                return String.fromCharCode(((code - 65 + shiftAmount) % ALPHABET_SIZE + ALPHABET_SIZE) % ALPHABET_SIZE + 65);
+            }
+            // Lowercase a-z
+            if (code >= 97 && code <= 122) {
+                return String.fromCharCode(((code - 97 + shiftAmount) % ALPHABET_SIZE + ALPHABET_SIZE) % ALPHABET_SIZE + 97);
+            }
+            return char; // Non-alphabetic characters remain unchanged
+        }
+
+        function processText(text, shiftAmount) {
+            return text.split('').map(char => shiftChar(char, shiftAmount)).join('');
+        }
+
+        function updateTexts() {
+            if (sourceType === 'plain') {
+                cipherInput.value = processText(sourceText, currentShift);
+            } else {
+                plainInput.value = processText(sourceText, -currentShift);
+            }
+        }
+
+        function setShift(newShift) {
+            let normalized = newShift % ALPHABET_SIZE;
+            if (normalized < 0) normalized += ALPHABET_SIZE;
+            
+            currentShift = normalized;
+            
+            // Update UI
+            shiftSlider.value = currentShift;
+            shiftDisplay.textContent = `Shift: ${currentShift}`;
+            
+            if (!isDragging) {
+                currentRotation = -currentShift * SLICE_ANGLE;
+                applyRotation();
+            }
+            
+            updateTexts();
+        }
+
+        function applyRotation() {
+            innerRingGroup.style.transform = `rotate(${currentRotation}deg)`;
+        }
+
+
+        // --- 3. Wheel Drag Interaction Logic ---
+        
+        // Helper to get angle from mouse/touch event relative to SVG center
+        function getEventAngle(e) {
+            const rect = wheelSvg.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            
+            // Handle both mouse and touch events
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            
+            return Math.atan2(clientY - cy, clientX - cx) * (180 / Math.PI);
+        }
+
+        wheelSvg.addEventListener('pointerdown', (e) => {
+            e.preventDefault(); // Prevent text selection
+            isDragging = true;
+            innerRingGroup.style.transition = 'none'; // Disable transition for immediate drag
+            
+            dragStartAngle = getEventAngle(e);
+            dragStartRotation = currentRotation;
+            
+            // Add cursor styling
+            wheelSvg.classList.add('cursor-grabbing');
+        });
+
+        window.addEventListener('pointermove', (e) => {
+            if (!isDragging) return;
+            
+            const currentAngle = getEventAngle(e);
+            const delta = currentAngle - dragStartAngle;
+            
+            currentRotation = dragStartRotation + delta;
+            applyRotation();
+        });
+
+        window.addEventListener('pointerup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            // Restore transition for smooth snapping
+            innerRingGroup.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            wheelSvg.classList.remove('cursor-grabbing');
+            
+            // Snap rotation to nearest letter slice
+            let snappedShift = Math.round(-currentRotation / SLICE_ANGLE) % ALPHABET_SIZE;
+            if (snappedShift < 0) snappedShift += ALPHABET_SIZE;
+            
+            setShift(snappedShift);
+        });
+
+
+        // --- 4. Event Listeners ---
+        
+        // Text Inputs
+        plainInput.addEventListener('input', (e) => {
+            sourceText = e.target.value;
+            sourceType = 'plain';
+            updateTexts();
+        });
+
+        cipherInput.addEventListener('input', (e) => {
+            sourceText = e.target.value;
+            sourceType = 'cipher';
+            updateTexts();
+        });
+
+        // Controls
+        shiftSlider.addEventListener('input', (e) => {
+            setShift(parseInt(e.target.value));
+        });
+
+        document.getElementById('btn-decrease').addEventListener('click', () => {
+            setShift(currentShift - 1);
+        });
+
+        document.getElementById('btn-increase').addEventListener('click', () => {
+            setShift(currentShift + 1);
+        });
+
+        document.getElementById('btn-clear').addEventListener('click', () => {
+            sourceText = '';
+            plainInput.value = '';
+            cipherInput.value = '';
+            setShift(0);
+        });
+
+        document.getElementById('btn-random').addEventListener('click', () => {
+            const randomShift = Math.floor(Math.random() * 25) + 1; // 1 to 25
+            setShift(randomShift);
+        });
+
+        // Initialize state visually
+        applyRotation();
+
+    </script>
+</body>
+</html>
