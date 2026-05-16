@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pigpen Cipher Interactive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .font-georgia { font-family: Georgia, serif; }
+        
+        /* Custom scrollbar for text areas */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        textarea { outline: none; resize: none; }
+    </style>
+</head>
+<body class="min-h-screen bg-[#f4f6f8] relative overflow-x-hidden font-sans text-slate-800 selection:bg-amber-200">
+
+    <!-- Decorative Skewed Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none hidden lg:flex">
+        <div class="w-[45%] h-full"></div>
+        <div class="w-[55%] h-full relative">
+            <div class="absolute inset-0 bg-white -skew-x-6 origin-bottom transform translate-x-16 shadow-sm"></div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-16 relative z-10 min-h-screen flex items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center w-full">
+            
+            <!-- Left Column: Headers & Key Visualizer -->
+            <div class="flex flex-col">
+                
+                <!-- Tag -->
+                <div class="inline-flex items-center gap-2 border border-amber-300 text-amber-500 px-3 py-1 rounded-[4px] text-[10px] tracking-[0.2em] font-bold uppercase mb-8 self-start bg-amber-50/50">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Cryptography Project
+                </div>
+
+                <!-- Typography -->
+                <h1 class="text-6xl md:text-7xl font-georgia font-bold text-[#0f172a] mb-6 tracking-tight">
+                    Pigpen Cipher.
+                </h1>
+                <p class="text-slate-500 text-lg leading-relaxed mb-16 max-w-md">
+                    A classic geometric substitution cipher that exchanges letters for symbols based on a set of visual grid structures. Type in the workspace to see real-time encryption.
+                </p>
+
+                <!-- Cipher Key Visualizer -->
+                <div>
+                    <div class="flex items-center justify-between max-w-md mb-6">
+                        <div class="flex items-center gap-2 text-slate-500 font-bold text-[11px] tracking-[0.15em] uppercase">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+                            Cipher Key Map
+                        </div>
+                        <div class="text-amber-500 font-bold text-[13px]">Standard</div>
+                    </div>
+                    
+                    <div class="flex flex-col gap-6 max-w-md">
+                        <!-- Grid 1 & 2 -->
+                        <div class="flex justify-between items-center gap-4">
+                            <!-- TicTacToe Grid A-I -->
+                            <div class="grid grid-cols-3 w-28 h-28 bg-[#e6f4ea] border-[3px] border-slate-800 rounded-lg overflow-hidden shadow-sm font-georgia text-xl font-bold text-slate-800">
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px] border-b-[3px]">A</div>
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px] border-b-[3px]">B</div>
+                                <div class="flex items-center justify-center border-slate-800 border-b-[3px]">C</div>
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px] border-b-[3px]">D</div>
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px] border-b-[3px]">E</div>
+                                <div class="flex items-center justify-center border-slate-800 border-b-[3px]">F</div>
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px]">G</div>
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px]">H</div>
+                                <div class="flex items-center justify-center border-slate-800">I</div>
+                            </div>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 hidden sm:block"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+
+                            <!-- TicTacToe Grid J-R with dots -->
+                            <div class="grid grid-cols-3 w-28 h-28 bg-[#f3e8ff] border-[3px] border-slate-800 rounded-lg overflow-hidden shadow-sm font-georgia text-xl font-bold text-slate-800">
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px] border-b-[3px] relative">J<span class="absolute bottom-1 right-1 w-1.5 h-1.5 bg-slate-800 rounded-full"></span></div>
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px] border-b-[3px] relative">K<span class="absolute bottom-1 right-1 w-1.5 h-1.5 bg-slate-800 rounded-full"></span></div>
+                                <div class="flex items-center justify-center border-slate-800 border-b-[3px] relative">L<span class="absolute bottom-1 right-1 w-1.5 h-1.5 bg-slate-800 rounded-full"></span></div>
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px] border-b-[3px] relative">M<span class="absolute bottom-1 right-1 w-1.5 h-1.5 bg-slate-800 rounded-full"></span></div>
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px] border-b-[3px] relative">N<span class="absolute bottom-1 right-1 w-1.5 h-1.5 bg-slate-800 rounded-full"></span></div>
+                                <div class="flex items-center justify-center border-slate-800 border-b-[3px] relative">O<span class="absolute bottom-1 right-1 w-1.5 h-1.5 bg-slate-800 rounded-full"></span></div>
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px] relative">P<span class="absolute bottom-1 right-1 w-1.5 h-1.5 bg-slate-800 rounded-full"></span></div>
+                                <div class="flex items-center justify-center border-slate-800 border-r-[3px] relative">Q<span class="absolute bottom-1 right-1 w-1.5 h-1.5 bg-slate-800 rounded-full"></span></div>
+                                <div class="flex items-center justify-center border-slate-800 relative">R<span class="absolute bottom-1 right-1 w-1.5 h-1.5 bg-slate-800 rounded-full"></span></div>
+                            </div>
+                        </div>
+
+                        <!-- Grid 3 & 4 -->
+                        <div class="flex justify-between items-center gap-4">
+                            <!-- X Grid S-V -->
+                            <div class="w-28 h-28 relative bg-[#e6f4ea] border-[3px] border-slate-800 rounded-lg overflow-hidden shadow-sm">
+                                <svg class="absolute inset-0 w-full h-full stroke-slate-800" stroke-width="3" fill="none"><line x1="0" y1="0" x2="112" y2="112"></line><line x1="112" y1="0" x2="0" y2="112"></line></svg>
+                                <div class="absolute top-1 w-full text-center font-bold font-georgia text-xl text-slate-800">S</div>
+                                <div class="absolute left-1 top-0 h-full flex flex-col justify-center font-bold font-georgia text-xl text-slate-800">T</div>
+                                <div class="absolute right-1 top-0 h-full flex flex-col justify-center font-bold font-georgia text-xl text-slate-800">U</div>
+                                <div class="absolute bottom-1 w-full text-center font-bold font-georgia text-xl text-slate-800">V</div>
+                            </div>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-300 hidden sm:block"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+
+                            <!-- X Grid W-Z with dots -->
+                            <div class="w-28 h-28 relative bg-[#f3e8ff] border-[3px] border-slate-800 rounded-lg overflow-hidden shadow-sm">
+                                <svg class="absolute inset-0 w-full h-full stroke-slate-800" stroke-width="3" fill="none"><line x1="0" y1="0" x2="112" y2="112"></line><line x1="112" y1="0" x2="0" y2="112"></line></svg>
+                                <div class="absolute top-1 w-full text-center font-bold font-georgia text-xl text-slate-800 flex justify-center items-center">W <span class="w-1.5 h-1.5 bg-slate-800 rounded-full ml-1"></span></div>
+                                <div class="absolute left-1 top-0 h-full flex flex-col justify-center font-bold font-georgia text-xl text-slate-800">X <span class="w-1.5 h-1.5 bg-slate-800 rounded-full mt-1"></span></div>
+                                <div class="absolute right-1 top-0 h-full flex flex-col justify-center font-bold font-georgia text-xl text-slate-800">Y <span class="w-1.5 h-1.5 bg-slate-800 rounded-full mt-1"></span></div>
+                                <div class="absolute bottom-1 w-full text-center font-bold font-georgia text-xl text-slate-800 flex justify-center items-center">Z <span class="w-1.5 h-1.5 bg-slate-800 rounded-full ml-1"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Interactive Workspace -->
+            <div class="flex flex-col">
+                
+                <div class="relative">
+                    <!-- Plaintext Card -->
+                    <div class="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 p-8 pb-12 mb-4 relative z-10">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="flex items-center gap-2 text-slate-800 font-bold text-[11px] tracking-[0.15em] uppercase">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
+                                Plaintext
+                            </div>
+                            <div class="bg-slate-100 text-slate-500 text-[9px] tracking-[0.1em] uppercase font-bold px-2 py-1 rounded">
+                                Text Input
+                            </div>
+                        </div>
+                        <textarea
+                            id="plaintextInput"
+                            placeholder="Enter your message here..."
+                            class="w-full text-2xl font-georgia text-slate-600 placeholder-slate-300 bg-transparent min-h-[120px]"
+                        ></textarea>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute bottom-6 right-8 text-slate-300"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                    </div>
+
+                    <!-- Ciphertext Card -->
+                    <div class="bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 p-8 pb-12 relative z-10">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="flex items-center gap-2 text-slate-800 font-bold text-[11px] tracking-[0.15em] uppercase">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                Ciphertext
+                            </div>
+                            <div class="bg-slate-100 text-slate-500 text-[9px] tracking-[0.1em] uppercase font-bold px-2 py-1 rounded">
+                                Geometric Output
+                            </div>
+                        </div>
+                        
+                        <div id="ciphertextOutput" class="w-full min-h-[120px] max-h-[250px] overflow-y-auto">
+                            <div class="text-2xl font-georgia text-slate-300">
+                                Encrypted output...
+                            </div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute bottom-6 right-8 text-slate-300"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex gap-4 mt-8 z-10">
+                    <button 
+                        id="clearBtn"
+                        class="bg-[#0f172a] hover:bg-slate-800 text-white font-medium text-sm px-8 py-4 rounded-md transition-colors"
+                    >
+                        Clear Fields
+                    </button>
+                    <button 
+                        id="sampleBtn"
+                        class="bg-amber-500 hover:bg-amber-600 text-white font-medium text-sm px-8 py-4 rounded-md transition-colors flex items-center gap-2"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                        Sample Text
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const plaintextInput = document.getElementById('plaintextInput');
+            const ciphertextOutput = document.getElementById('ciphertextOutput');
+            const clearBtn = document.getElementById('clearBtn');
+            const sampleBtn = document.getElementById('sampleBtn');
+
+            const paths = {
+                A: 'M 24 0 L 24 24 L 0 24',
+                B: 'M 0 0 L 0 24 L 24 24 L 24 0',
+                C: 'M 0 0 L 0 24 L 24 24',
+                D: 'M 0 0 L 24 0 L 24 24 L 0 24',
+                E: 'M 0 0 L 24 0 L 24 24 L 0 24 Z',
+                F: 'M 24 0 L 0 0 L 0 24 L 24 24',
+                G: 'M 0 0 L 24 0 L 24 24',
+                H: 'M 0 24 L 0 0 L 24 0 L 24 24',
+                I: 'M 24 0 L 0 0 L 0 24',
+                S: 'M 0 0 L 12 12 L 24 0',
+                T: 'M 0 0 L 12 12 L 0 24',
+                U: 'M 24 0 L 12 12 L 24 24',
+                V: 'M 0 24 L 12 12 L 24 24',
+            };
+
+            function getPigpenSVG(char) {
+                const c = char.toUpperCase();
+                
+                // Handle spaces and unknown characters
+                if (c === ' ') return '<div class="w-4 h-8 inline-block"></div>';
+
+                // Fixed: Removed S,T,U,V from the isDotted check
+                const isDotted = 'JKLMNOPQRWXYZ'.includes(c);
+                let baseChar = c;
+
+                if (isDotted) {
+                    if (c <= 'R') {
+                        baseChar = String.fromCharCode(c.charCodeAt(0) - 9); // J->A, K->B...
+                    } else if (c <= 'Z') {
+                        baseChar = String.fromCharCode(c.charCodeAt(0) - 4); // W->S, X->T...
+                    }
+                }
+
+                const pathData = paths[baseChar];
+
+                // If not an alphabet character, just render the text
+                if (!pathData) {
+                    return `<span class="inline-block text-2xl font-georgia text-slate-400 self-center px-1">${char}</span>`;
+                }
+
+                let dotSVG = '';
+                if (isDotted) {
+                    let cx = 12, cy = 12;
+                    if (c === 'W') { cy = 5; }
+                    else if (c === 'X') { cx = 5; }
+                    else if (c === 'Y') { cx = 19; }
+                    else if (c === 'Z') { cy = 19; }
+                    
+                    dotSVG = `<circle cx="${cx}" cy="${cy}" r="2.5" fill="currentColor" stroke="none" />`;
+                }
+
+                return `
+                    <svg viewBox="-2 -2 28 28" class="w-8 h-8 inline-block stroke-slate-800" stroke-width="2.5" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+                        <path d="${pathData}" />
+                        ${dotSVG}
+                    </svg>
+                `;
+            }
+
+            function updateCiphertext() {
+                const text = plaintextInput.value;
+                
+                if (!text) {
+                    ciphertextOutput.innerHTML = '<div class="text-2xl font-georgia text-slate-300">Encrypted output...</div>';
+                    return;
+                }
+
+                let html = '<div class="flex flex-wrap gap-x-6 gap-y-4">';
+                const words = text.split(' ');
+                
+                words.forEach(word => {
+                    html += '<div class="flex gap-1.5 items-center">';
+                    for (let i = 0; i < word.length; i++) {
+                        html += getPigpenSVG(word[i]);
+                    }
+                    html += '</div>';
+                });
+                
+                html += '</div>';
+                ciphertextOutput.innerHTML = html;
+            }
+
+            function clearFields() {
+                plaintextInput.value = '';
+                updateCiphertext();
+                plaintextInput.focus();
+            }
+
+            // Event Listeners
+            plaintextInput.addEventListener('input', updateCiphertext);
+            clearBtn.addEventListener('click', clearFields);
+            
+            sampleBtn.addEventListener('click', () => {
+                plaintextInput.value = "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG";
+                updateCiphertext();
+            });
+        });
+    </script>
+</body>
+</html>
